@@ -5300,6 +5300,13 @@ gatsby-parcel-config@^1.4.0:
     "@parcel/transformer-js" "2.8.2"
     "@parcel/transformer-json" "2.8.2"
 
+gatsby-plugin-canonical-urls@^5.4.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-canonical-urls/-/gatsby-plugin-canonical-urls-5.4.0.tgz#0f39e45de3bfaac4a77a56da37f4cadbb0e5a4fb"
+  integrity sha512-cGWcb08PfP+cDBPUCdtrOkAGmjCH0HgHnncEpu6C8xOXFZ392Yo0kDMjqtd0R5B25L+q1J2SHwJNm7GrqXw9ig==
+  dependencies:
+    "@babel/runtime" "^7.20.7"
+
 gatsby-plugin-feed@^5.3.1:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-feed/-/gatsby-plugin-feed-5.4.0.tgz#5a8662835d5bf9e83678079866c409b379592b44"
