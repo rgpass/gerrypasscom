@@ -14,7 +14,7 @@ export const Post: FC<Props> = ({ post }) => {
       <Link to={post.fields.slug} itemProp="url">
         <Stack spacing="4">
           <Stack spacing="1.5">
-            <Text color="blue.500" fontSize="sm" fontWeight="semibold">
+            <Text color="brand.500" fontSize="sm" fontWeight="semibold">
               {post.frontmatter.date}
             </Text>
 
