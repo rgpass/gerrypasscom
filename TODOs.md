@@ -1,5 +1,6 @@
 - Style `blog-post.js`
 - Favicon
+- Lighthouse changes
 - Change fonts (Inter FTW?)
 - Tags
   - Show them
