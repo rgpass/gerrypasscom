@@ -1,5 +1,5 @@
-import { Heading, Stack, Text } from "@chakra-ui/react"
-import { Link, PageProps } from "gatsby"
+import { Stack } from "@chakra-ui/react"
+import { PageProps } from "gatsby"
 import React, { FC } from "react"
 import Bio from "../../components/Bio"
 import Layout from "../../components/Layout/Layout"
