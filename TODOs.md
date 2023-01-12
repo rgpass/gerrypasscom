@@ -1,5 +1,6 @@
 - Style `blog-post.js`
 - Favicon
+- Prism styles
 - Lighthouse changes
 - Change fonts (Inter FTW?)
 - Tags

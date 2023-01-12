@@ -1,19 +1,9 @@
 import * as React from "react"
 import { FC, ReactNode } from "react"
 import { Flex } from "@chakra-ui/react"
-import { Footer, Header } from "./components"
-
 import { MDXProvider } from "@mdx-js/react"
-
-const MyH1 = props => <h1 style={{ color: `purple` }} {...props} />
-const MyParagraph = props => (
-  <p style={{ fontSize: "18px", lineHeight: 1.6 }} {...props} />
-)
-
-const components = {
-  h1: MyH1,
-  p: MyParagraph,
-}
+import { Footer, Header } from "./components"
+import { components } from "../mdx-components"
 
 interface Props {
   children: ReactNode
