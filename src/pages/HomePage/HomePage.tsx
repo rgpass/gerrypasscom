@@ -1,3 +1,4 @@
+import { Heading, Stack, Text } from "@chakra-ui/react"
 import { Link, PageProps } from "gatsby"
 import React, { FC } from "react"
 import Bio from "../../components/Bio"
@@ -35,39 +36,27 @@ export const HomePage: FC<PageProps<DataProps>> = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Bio />
-      <ol style={{ listStyle: `none` }}>
+      <Stack spacing="12">
         {posts.map(post => {
-          const title = post.frontmatter.title || post.fields.slug
+          const description = post.frontmatter.description || post.excerpt
 
           return (
-            <li key={post.fields.slug}>
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
-                <header>
-                  <h2>
-                    <Link to={post.fields.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
-                    </Link>
-                  </h2>
-                  <small>{post.frontmatter.date}</small>
-                </header>
-                <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
-                    }}
-                    itemProp="description"
-                  />
-                </section>
-              </article>
-            </li>
+            <Link to={post.fields.slug} itemProp="url">
+              <Stack spacing="4">
+                <Stack spacing="1.5">
+                  <Text color="blue.500" fontSize="sm" fontWeight="semibold">
+                    {post.frontmatter.date}
+                  </Text>
+                  <Heading as="h3" size="lg">
+                    {post.frontmatter.title}
+                  </Heading>
+                </Stack>
+                <Text color="muted">{description}</Text>
+              </Stack>
+            </Link>
           )
         })}
-      </ol>
+      </Stack>
     </Layout>
   )
 }

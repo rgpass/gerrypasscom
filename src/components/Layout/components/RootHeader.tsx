@@ -10,7 +10,7 @@ export const RootHeader: FC<Props> = ({ title }) => {
     <Stack as="header" spacing="4">
       <Stack spacing="1">
         <Text
-          color="green.600"
+          color="blue.500"
           fontSize={{ base: "sm", md: "md" }}
           fontWeight="semibold"
         >
