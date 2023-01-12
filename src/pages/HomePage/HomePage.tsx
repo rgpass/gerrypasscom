@@ -3,6 +3,7 @@ import { Link, PageProps } from "gatsby"
 import React, { FC } from "react"
 import Bio from "../../components/Bio"
 import Layout from "../../components/Layout/Layout"
+import { Post } from "./Post"
 
 type Post = any
 
@@ -37,25 +38,9 @@ export const HomePage: FC<PageProps<DataProps>> = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Stack spacing="12">
-        {posts.map(post => {
-          const description = post.frontmatter.description || post.excerpt
-
-          return (
-            <Link to={post.fields.slug} itemProp="url">
-              <Stack spacing="4">
-                <Stack spacing="1.5">
-                  <Text color="blue.500" fontSize="sm" fontWeight="semibold">
-                    {post.frontmatter.date}
-                  </Text>
-                  <Heading as="h3" size="lg">
-                    {post.frontmatter.title}
-                  </Heading>
-                </Stack>
-                <Text color="muted">{description}</Text>
-              </Stack>
-            </Link>
-          )
-        })}
+        {posts.map(post => (
+          <Post key={post.fields.slug} post={post} />
+        ))}
       </Stack>
     </Layout>
   )
