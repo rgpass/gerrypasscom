@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { Heading, Link as CUILink } from "@chakra-ui/react"
+import { Link as CUILink } from "@chakra-ui/react"
 import { Link } from "gatsby"
 
 interface Props {

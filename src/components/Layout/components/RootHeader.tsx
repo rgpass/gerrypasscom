@@ -1,6 +1,6 @@
 import React, { FC } from "react"
-import { Heading, Stack, Text } from "@chakra-ui/react"
-import { H1 } from "../../mdx-components/H1"
+import { Stack, Text } from "@chakra-ui/react"
+import { H1, H4 } from "../../mdx-components"
 
 interface Props {
   title: string
@@ -19,10 +19,10 @@ export const RootHeader: FC<Props> = ({ title }) => {
         </Text>
         <H1 w="full">{title}</H1>
       </Stack>
-      <Heading as="h3" size="md" w="full">
+      <H4 w="full">
         I write about software development, design, and product management, with
         a focus on startups.
-      </Heading>
+      </H4>
     </Stack>
   )
 }

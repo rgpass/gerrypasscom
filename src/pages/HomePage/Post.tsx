@@ -1,6 +1,7 @@
 import React, { FC } from "react"
-import { Box, Heading, Stack, Text } from "@chakra-ui/react"
+import { Box, Stack, Text } from "@chakra-ui/react"
 import { Link } from "gatsby"
+import { H2 } from "../../components/mdx-components"
 
 type Post = any
 type Props = Post
@@ -16,10 +17,10 @@ export const Post: FC<Props> = ({ post }) => {
             <Text color="blue.500" fontSize="sm" fontWeight="semibold">
               {post.frontmatter.date}
             </Text>
-            <Heading as="h3" itemProp="headline" size="lg">
-              {post.frontmatter.title}
-            </Heading>
+
+            <H2 itemProp="headline">{post.frontmatter.title}</H2>
           </Stack>
+
           <Text color="muted" itemProp="description">
             {description}
           </Text>
