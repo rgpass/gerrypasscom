@@ -1,0 +1,10 @@
+- Style `blog-post.js`
+- Favicon
+- Change fonts (Inter FTW?)
+- Tags
+  - Show them
+  - Add a PRNG to choose the `colorScheme`
+- Filter by Tags
+  - Component at the top that shows all the Tags
+- Code clean up
+  - Remove `normalize.css` and `style.css`
