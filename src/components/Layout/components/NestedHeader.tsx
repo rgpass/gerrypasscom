@@ -8,10 +8,14 @@ interface Props {
 
 export const NestedHeader: FC<Props> = ({ title }) => {
   return (
-    <Link to="/">
-      <CUILink color="blue.500" fontWeight="semibold" fontSize="xl">
-        {title}
-      </CUILink>
-    </Link>
+    <CUILink
+      as={Link}
+      color="blue.500"
+      fontWeight="semibold"
+      fontSize="xl"
+      to="/"
+    >
+      {title}
+    </CUILink>
   )
 }
