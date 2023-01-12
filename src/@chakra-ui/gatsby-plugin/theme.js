@@ -2,7 +2,7 @@
 import { baseTheme, extendTheme } from "@chakra-ui/react"
 const theme = {
   colors: {
-    brand: baseTheme.colors.red,
+    brand: baseTheme.colors.green,
   },
 }
 
