@@ -1,8 +1,8 @@
-- Prism styles
 - Lighthouse changes
 - SEO check
   - Google Search console
   - `sitemap.xml`
+- [Aliases](https://www.gatsbyjs.com/plugins/gatsby-plugin-alias-imports/#gatsby-plugin-alias-imports)
 - Change fonts (Inter FTW?)
 - Tags
   - Show them

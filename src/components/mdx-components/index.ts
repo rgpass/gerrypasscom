@@ -1,4 +1,4 @@
-import { Code } from "@chakra-ui/react"
+import { CodeHighlight } from "./CodeHighlight"
 import { H1, H2, H3, H4, H5, H6 } from "./Headings"
 import { Li, Ol, Ul } from "./Lists"
 import { A, Hr } from "./Miscellaneous"
@@ -12,7 +12,7 @@ export * from "./Texts"
 export const components = {
   a: A,
   blockquote: Blockquote,
-  Code: Code,
+  Code: CodeHighlight,
   h1: H1,
   h2: H2,
   h3: H3,
