@@ -1,4 +1,3 @@
-- Style `blog-post.js`
 - Favicon
 - Prism styles
 - Lighthouse changes
