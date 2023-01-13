@@ -138,8 +138,7 @@ module.exports = {
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        // TODO: Replace the icon with my own.
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/profile-pic-modified.png`, // This path is relative to the root of the site.
       },
     },
     {
