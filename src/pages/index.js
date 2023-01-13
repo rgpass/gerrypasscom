@@ -1,6 +1,6 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import { HomePage } from "./HomePage"
+import { HomePage } from "../page-components/HomePage"
 import Seo from "../components/Seo"
 
 export default HomePage
