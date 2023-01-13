@@ -10,7 +10,7 @@ export const NestedHeader: FC<Props> = ({ title }) => {
   return (
     <CUILink
       as={Link}
-      color="brand.500"
+      color="brand.600"
       fontSize="xl"
       fontWeight="semibold"
       to="/"

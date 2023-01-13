@@ -11,7 +11,7 @@ export const RootHeader: FC<Props> = ({ title }) => {
     <Stack as="header" spacing="4">
       <Stack spacing="1">
         <Text
-          color="brand.500"
+          color="brand.600"
           fontSize={{ base: "sm", md: "md" }}
           fontWeight="semibold"
         >
@@ -19,7 +19,7 @@ export const RootHeader: FC<Props> = ({ title }) => {
         </Text>
         <H1 w="full">{title}</H1>
       </Stack>
-      <H4 w="full">
+      <H4 as="p" w="full">
         I write about software development, design, and product management, with
         a focus on startups.
       </H4>

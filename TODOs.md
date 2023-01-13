@@ -1,4 +1,3 @@
-- Lighthouse changes
 - SEO check
   - Google Search console
   - `sitemap.xml`
