@@ -2,6 +2,7 @@ import React, { FC } from "react"
 import { Box, Stack, Text } from "@chakra-ui/react"
 import { Link } from "gatsby"
 import { H2 } from "../../components/mdx-components"
+import { Accent } from "../../components/Accent"
 
 type Post = any
 type Props = Post
@@ -14,10 +15,7 @@ export const Post: FC<Props> = ({ post }) => {
       <Link to={post.fields.slug} itemProp="url">
         <Stack spacing="4">
           <Stack spacing="1.5">
-            <Text color="brand.500" fontSize="sm" fontWeight="semibold">
-              {post.frontmatter.date}
-            </Text>
-
+            <Accent fontSize="sm">{post.frontmatter.date}</Accent>
             <H2 itemProp="headline">{post.frontmatter.title}</H2>
           </Stack>
 

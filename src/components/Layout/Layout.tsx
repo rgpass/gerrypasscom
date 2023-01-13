@@ -1,6 +1,6 @@
 import * as React from "react"
 import { FC, ReactNode } from "react"
-import { Flex } from "@chakra-ui/react"
+import { Flex, Stack } from "@chakra-ui/react"
 import { MDXProvider } from "@mdx-js/react"
 import { Footer, Header } from "./components"
 import { components } from "../mdx-components"
@@ -24,16 +24,18 @@ const Layout: FC<Props> = ({ children, location, title }) => {
     <Flex align="center" justify="center" w="full">
       <Flex
         direction="column"
-        gap="12"
+        gap={12}
+        maxW="3xl"
         px={{ base: 4, md: 8 }}
         py="8"
-        maxW="3xl"
         w="full"
       >
         <Header isRootPath={isRootPath} title={title} />
+
         <main>
-          <MDXProvider components={components}>{children}</MDXProvider>
+          <MDXProvider components={components as any}>{children}</MDXProvider>
         </main>
+
         <Footer />
       </Flex>
     </Flex>

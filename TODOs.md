@@ -9,3 +9,6 @@
   - Component at the top that shows all the Tags
 - Code clean up
   - Remove `normalize.css` and `style.css`
+- Add dark mode?
+- Emulate another famous dev's designs
+- Hover over `Post.tsx` effect

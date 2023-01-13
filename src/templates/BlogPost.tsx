@@ -4,8 +4,9 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/Bio"
 import Layout from "../components/Layout/Layout"
 import Seo from "../components/Seo"
-import { Hr } from "../components/mdx-components"
-import { Flex } from "@chakra-ui/react"
+import { H1, Hr } from "../components/mdx-components"
+import { Flex, Stack } from "@chakra-ui/react"
+import { Accent } from "../components/Accent"
 
 const BlogPostTemplate = ({
   data: { previous, next, site, mdx: post },
@@ -16,27 +17,34 @@ const BlogPostTemplate = ({
 
   return (
     <Layout location={location} title={siteTitle}>
-      <article itemScope itemType="http://schema.org/Article">
-        <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
-        </header>
-        <section itemProp="articleBody">{children}</section>
-        <Hr />
-      </article>
-      <Flex as="nav" justify="space-between" mt={6}>
-        {previous && (
-          <Link to={previous.fields.slug} rel="prev">
-            ← {previous.frontmatter.title}
-          </Link>
-        )}
+      <Stack spacing={8}>
+        <article itemScope itemType="http://schema.org/Article">
+          <Stack as="header" spacing={2}>
+            <H1 itemProp="headline" mt={0}>
+              {post.frontmatter.title}
+            </H1>
+            <Accent>{post.frontmatter.date}</Accent>
+          </Stack>
 
-        {next && (
-          <Link to={next.fields.slug} rel="next">
-            {next.frontmatter.title} →
-          </Link>
-        )}
-      </Flex>
+          <section itemProp="articleBody">{children}</section>
+        </article>
+
+        <Hr />
+
+        <Flex as="nav" justify="space-between" mt={6}>
+          {previous && (
+            <Link to={previous.fields.slug} rel="prev">
+              ← {previous.frontmatter.title}
+            </Link>
+          )}
+
+          {next && (
+            <Link to={next.fields.slug} rel="next">
+              {next.frontmatter.title} →
+            </Link>
+          )}
+        </Flex>
+      </Stack>
     </Layout>
   )
 }
