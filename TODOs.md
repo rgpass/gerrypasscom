@@ -1,5 +1,8 @@
 - Prism styles
 - Lighthouse changes
+- SEO check
+  - Google Search console
+  - `sitemap.xml`
 - Change fonts (Inter FTW?)
 - Tags
   - Show them
