@@ -13,8 +13,8 @@ export const Post: FC<Props> = ({ post }) => {
   return (
     <Box as="article" itemScope itemType="http://schema.org/Article">
       <Link to={post.fields.slug} itemProp="url">
-        <Stack spacing="4">
-          <Stack spacing="1.5">
+        <Stack spacing="2">
+          <Stack spacing="1">
             <Accent fontSize="sm">{post.frontmatter.date}</Accent>
             <H2 itemProp="headline">{post.frontmatter.title}</H2>
           </Stack>
