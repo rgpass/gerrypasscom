@@ -21,6 +21,26 @@ module.exports = {
     },
   },
   plugins: [
+    {
+      resolve: "@chakra-ui/gatsby-plugin",
+      options: {
+        /**
+         * @property {boolean} [resetCSS=true]
+         * if false, this plugin will not use `<CSSReset />
+         */
+        resetCSS: true,
+        /**
+         * @property {boolean} [isUsingColorMode=true]
+         * if false, this plugin will not use <ColorModeProvider />
+         */
+        isUsingColorMode: true,
+        /**
+         * @property {boolean} [isBaseProvider=false]
+         * if true, will render `<ChakraBaseProvider>`
+         */
+        isBaseProvider: false,
+      },
+    },
     `gatsby-plugin-netlify`,
     `gatsby-plugin-image`,
     {
@@ -118,8 +138,7 @@ module.exports = {
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        // TODO: Replace the icon with my own.
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/profile-pic-modified.png`, // This path is relative to the root of the site.
       },
     },
     {
