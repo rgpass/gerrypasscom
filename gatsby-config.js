@@ -148,5 +148,13 @@ module.exports = {
         stripQueryString: true,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          "G-8SM5SQ1XDY", // Google Analytics / GA
+        ],
+      },
+    },
   ],
 }
