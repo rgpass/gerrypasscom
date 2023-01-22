@@ -37,7 +37,7 @@ export const HomePage: FC<PageProps<DataProps>> = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Stack spacing={10}>
+      <Stack spacing={6}>
         {posts.map(post => (
           <Post key={post.fields.slug} post={post} />
         ))}

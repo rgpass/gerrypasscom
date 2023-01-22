@@ -11,7 +11,17 @@ export const Post: FC<Props> = ({ post }) => {
   const description = post.frontmatter.description || post.excerpt
 
   return (
-    <Box as="article" itemScope itemType="http://schema.org/Article">
+    <Box
+      as="article"
+      borderRadius="lg"
+      itemScope
+      itemType="http://schema.org/Article"
+      p={{ base: 2, sm: 4 }}
+      transitionDuration="slow"
+      transitionProperty="all"
+      transitionTimingFunction="ease-out"
+      _hover={{ bg: "gray.100", transform: "scale(1.025, 1.025)" }}
+    >
       <Link to={post.fields.slug} itemProp="url">
         <Stack spacing="2">
           <Stack spacing="1">
