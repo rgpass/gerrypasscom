@@ -4,11 +4,20 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/Bio"
 import Layout from "../components/Layout/Layout"
 import Seo from "../components/Seo"
-import { H1, Hr } from "../components/mdx-components"
+import { H1, H3, Hr, P } from "../components/mdx-components"
 import { Flex, Stack } from "@chakra-ui/react"
 import { Accent } from "../components/Accent"
 
 import { SocialSharing } from "../components/SocialSharing"
+import ConvertKitForm from "convertkit-react"
+
+const config = {
+  buttonBackground: "var(--chakra-colors-brand-600)",
+  formId: 4786156,
+  template: "clare",
+  emailPlaceholder: "Enter an email address",
+  submitText: "Sign up",
+}
 
 const BlogPostTemplate = ({
   data: { previous, next, site, mdx: post },
@@ -34,6 +43,15 @@ const BlogPostTemplate = ({
         <Hr />
 
         <SocialSharing slug={post.fields.slug} title={post.frontmatter.title} />
+
+        <Hr />
+
+        <H3>Enjoyed this article?</H3>
+        <P mt={20}>
+          Subscribe to my newsletter to receive my next articles right in your
+          email.
+        </P>
+        <ConvertKitForm {...config} />
 
         <Hr />
 
