@@ -4,16 +4,11 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/Bio"
 import Layout from "../components/Layout/Layout"
 import Seo from "../components/Seo"
-import { H1, Hr, P } from "../components/mdx-components"
-import { Flex, HStack, IconButton, Stack } from "@chakra-ui/react"
+import { H1, Hr } from "../components/mdx-components"
+import { Flex, Stack } from "@chakra-ui/react"
 import { Accent } from "../components/Accent"
-import { FaFacebook, FaHackerNews, FaReddit, FaTwitter } from "react-icons/fa"
 
-const siteUrl = "https://www.gerrypass.com"
-const share = (e, name: string, size: string): void => {
-  window.open(e.currentTarget.href, name, size)
-  e.preventDefault()
-}
+import { SocialSharing } from "../components/SocialSharing"
 
 const BlogPostTemplate = ({
   data: { previous, next, site, mdx: post },
@@ -38,41 +33,7 @@ const BlogPostTemplate = ({
 
         <Hr />
 
-        <HStack>
-          <P mt="unset">Share: &nbsp;</P>
-
-          <IconButton
-            as="a"
-            aria-label="Share on Twitter"
-            href={`https://twitter.com/share?text=${post.frontmatter.title} @YOUR_USERNAME&url=${siteUrl}${post.fields.slug}`}
-            icon={<FaTwitter />}
-            onClick={e => share(e, "twitter-share", "width=550,height=235")}
-          />
-
-          <IconButton
-            as="a"
-            aria-label="Share on Reddit"
-            href={`http://www.reddit.com/submit?title=${post.frontmatter.title}&url=${siteUrl}${post.fields.slug}`}
-            icon={<FaReddit />}
-            onClick={e => share(e, "reddit-share", "width=950,height=660")}
-          />
-
-          <IconButton
-            as="a"
-            aria-label="Share on Hacker News"
-            href={`https://news.ycombinator.com/submitlink?t=${post.frontmatter.title}&u=${siteUrl}${post.fields.slug}`}
-            icon={<FaHackerNews />}
-            onClick={e => share(e, "hn-share", "width=550,height=350")}
-          />
-
-          <IconButton
-            as="a"
-            aria-label="Share on Facebook"
-            href={`https://www.facebook.com/sharer/sharer.php?u=${siteUrl}${post.fields.slug}`}
-            icon={<FaFacebook />}
-            onClick={e => share(e, "facebook-share", "width=580,height=296")}
-          />
-        </HStack>
+        <SocialSharing slug={post.fields.slug} title={post.frontmatter.title} />
 
         <Hr />
 
