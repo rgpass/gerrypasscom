@@ -8,6 +8,8 @@ import { H1, Hr } from "../components/mdx-components"
 import { Flex, Stack } from "@chakra-ui/react"
 import { Accent } from "../components/Accent"
 
+import { SocialSharing } from "../components/SocialSharing"
+
 const BlogPostTemplate = ({
   data: { previous, next, site, mdx: post },
   location,
@@ -28,6 +30,10 @@ const BlogPostTemplate = ({
 
           <section itemProp="articleBody">{children}</section>
         </article>
+
+        <Hr />
+
+        <SocialSharing slug={post.fields.slug} title={post.frontmatter.title} />
 
         <Hr />
 
@@ -74,6 +80,9 @@ export const pageQuery = graphql`
     mdx(id: { eq: $id }) {
       id
       excerpt(pruneLength: 160)
+      fields {
+        slug
+      }
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
