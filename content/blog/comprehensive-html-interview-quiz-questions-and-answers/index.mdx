@@ -1,0 +1,197 @@
+---
+title: Comprehensive HTML Interview Quiz Questions and Answers
+date: "2023-01-23"
+description: A comprehensive list of HTML interview questions and answers to test your knowledge and prepare for your next interview.
+---
+
+import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  HStack,
+  Box,
+} from "@chakra-ui/react"
+import {
+  differenceItems,
+  formItems,
+  imageItems,
+  miniCodeChallengeItems,
+  miscellaneousItems,
+  overviewItems,
+  semanticItems,
+  syntaxItems,
+  tableItems,
+  terminologyItems,
+} from "./items"
+
+## Intro
+
+This list of HTML interview questions and answers is a comprehensive guide to test your knowledge and prepare for your next interview. It covers the most important topics and concepts you need to know to become a front-end developer.
+
+Try to answer the questions yourself before reading the answers. If you don't know all of them, don't worry. I didn't when I started making this list! 😅
+
+For the ones you get wrong, try to find the answer online and play around with it in a code editor. Then come back to the list in a few days/weeks and try again. You'll be surprised how much you'll learn!
+
+## Interview Quiz Questions and Answers
+
+### Overview Questions
+
+<Accordion allowMultiple mb={8} mt={4}>
+  {overviewItems.map((item, index) => (
+    <AccordionItem key={index}>
+      <AccordionButton _expanded={{ bgColor: "gray.100" }}>
+        <HStack justify="space-between" w="full">
+          <Box textAlign="left">{item.question}</Box>
+          <AccordionIcon />
+        </HStack>
+      </AccordionButton>
+      <AccordionPanel>{item.answer}</AccordionPanel>
+    </AccordionItem>
+  ))}
+</Accordion>
+
+### Terminology Questions
+
+<Accordion allowMultiple mb={8} mt={4}>
+  {terminologyItems.map((item, index) => (
+    <AccordionItem key={index}>
+      <AccordionButton _expanded={{ bgColor: "gray.100" }}>
+        <HStack justify="space-between" w="full">
+          <Box textAlign="left">{item.question}</Box>
+          <AccordionIcon />
+        </HStack>
+      </AccordionButton>
+      <AccordionPanel>{item.answer}</AccordionPanel>
+    </AccordionItem>
+  ))}
+</Accordion>
+
+### Syntax Questions
+
+<Accordion allowMultiple mb={8} mt={4}>
+  {syntaxItems.map((item, index) => (
+    <AccordionItem key={index}>
+      <AccordionButton _expanded={{ bgColor: "gray.100" }}>
+        <HStack justify="space-between" w="full">
+          <Box textAlign="left">{item.question}</Box>
+          <AccordionIcon />
+        </HStack>
+      </AccordionButton>
+      <AccordionPanel>{item.answer}</AccordionPanel>
+    </AccordionItem>
+  ))}
+</Accordion>
+
+### Semantic HTML Questions
+
+<Accordion allowMultiple mb={8} mt={4}>
+  {semanticItems.map((item, index) => (
+    <AccordionItem key={index}>
+      <AccordionButton _expanded={{ bgColor: "gray.100" }}>
+        <HStack justify="space-between" w="full">
+          <Box textAlign="left">{item.question}</Box>
+          <AccordionIcon />
+        </HStack>
+      </AccordionButton>
+      <AccordionPanel>{item.answer}</AccordionPanel>
+    </AccordionItem>
+  ))}
+</Accordion>
+
+### Table Questions
+
+<Accordion allowMultiple mb={8} mt={4}>
+  {tableItems.map((item, index) => (
+    <AccordionItem key={index}>
+      <AccordionButton _expanded={{ bgColor: "gray.100" }}>
+        <HStack justify="space-between" w="full">
+          <Box textAlign="left">{item.question}</Box>
+          <AccordionIcon />
+        </HStack>
+      </AccordionButton>
+      <AccordionPanel>{item.answer}</AccordionPanel>
+    </AccordionItem>
+  ))}
+</Accordion>
+
+### Form Questions
+
+<Accordion allowMultiple mb={8} mt={4}>
+  {formItems.map((item, index) => (
+    <AccordionItem key={index}>
+      <AccordionButton _expanded={{ bgColor: "gray.100" }}>
+        <HStack justify="space-between" w="full">
+          <Box textAlign="left">{item.question}</Box>
+          <AccordionIcon />
+        </HStack>
+      </AccordionButton>
+      <AccordionPanel>{item.answer}</AccordionPanel>
+    </AccordionItem>
+  ))}
+</Accordion>
+
+### Image Questions
+
+<Accordion allowMultiple mb={8} mt={4}>
+  {imageItems.map((item, index) => (
+    <AccordionItem key={index}>
+      <AccordionButton _expanded={{ bgColor: "gray.100" }}>
+        <HStack justify="space-between" w="full">
+          <Box textAlign="left">{item.question}</Box>
+          <AccordionIcon />
+        </HStack>
+      </AccordionButton>
+      <AccordionPanel>{item.answer}</AccordionPanel>
+    </AccordionItem>
+  ))}
+</Accordion>
+
+### Difference Questions
+
+<Accordion allowMultiple mb={8} mt={4}>
+  {differenceItems.map((item, index) => (
+    <AccordionItem key={index}>
+      <AccordionButton _expanded={{ bgColor: "gray.100" }}>
+        <HStack justify="space-between" w="full">
+          <Box textAlign="left">{item.question}</Box>
+          <AccordionIcon />
+        </HStack>
+      </AccordionButton>
+      <AccordionPanel>{item.answer}</AccordionPanel>
+    </AccordionItem>
+  ))}
+</Accordion>
+
+### Miscellaneous Questions
+
+<Accordion allowMultiple mb={8} mt={4}>
+  {miscellaneousItems.map((item, index) => (
+    <AccordionItem key={index}>
+      <AccordionButton _expanded={{ bgColor: "gray.100" }}>
+        <HStack justify="space-between" w="full">
+          <Box textAlign="left">{item.question}</Box>
+          <AccordionIcon />
+        </HStack>
+      </AccordionButton>
+      <AccordionPanel>{item.answer}</AccordionPanel>
+    </AccordionItem>
+  ))}
+</Accordion>
+
+### Mini Code Challenges
+
+<Accordion allowMultiple mb={8} mt={4}>
+  {miniCodeChallengeItems.map((item, index) => (
+    <AccordionItem key={index}>
+      <AccordionButton _expanded={{ bgColor: "gray.100" }}>
+        <HStack justify="space-between" w="full">
+          <Box textAlign="left">{item.question}</Box>
+          <AccordionIcon />
+        </HStack>
+      </AccordionButton>
+      <AccordionPanel>{item.answer}</AccordionPanel>
+    </AccordionItem>
+  ))}
+</Accordion>
