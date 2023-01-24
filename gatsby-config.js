@@ -4,22 +4,24 @@
  * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
  */
 
+const siteMetadata = {
+  title: `Gerry Pass`,
+  author: {
+    name: `Gerry Pass`,
+    summary: `who lives and works in Atlanta building useful things.`,
+  },
+  description: `Gerry Pass' personal website, covering software development and startups.`,
+  siteUrl: `https://www.gerrypass.com/`,
+  social: {
+    github: "rgpass",
+  },
+}
+
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
 module.exports = {
-  siteMetadata: {
-    title: `Gerry Pass`,
-    author: {
-      name: `Gerry Pass`,
-      summary: `who lives and works in Atlanta building useful things.`,
-    },
-    description: `Gerry Pass' personal website, covering software development and startups.`,
-    siteUrl: `https://www.gerrypass.com/`,
-    social: {
-      github: "rgpass",
-    },
-  },
+  siteMetadata,
   plugins: [
     {
       resolve: "@chakra-ui/gatsby-plugin",
@@ -154,6 +156,58 @@ module.exports = {
         trackingIds: [
           "G-8SM5SQ1XDY", // Google Analytics / GA
         ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        // site.siteMetadata.siteUrl is required for the plugin.
+        // allSitePage is helpful for non-blog posts.
+        // allMdx is the list of blog posts.
+        query: `{
+          site {
+            siteMetadata {
+              siteUrl
+            }
+          }
+          allSitePage {
+            nodes {
+              path
+            }
+          }
+          allMdx(sort: {frontmatter: {date: DESC}}) {
+            nodes {
+              excerpt
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+                date
+              }
+            }
+          }
+        }`,
+        resolvePages: ({ allMdx }) => {
+          const blogPosts = allMdx.nodes.map(node => ({
+            path: node.fields.slug,
+            lastmod: node.frontmatter.date,
+            changefreq: "weekly",
+            priority: 0.7,
+          }))
+
+          const dates = allMdx.nodes.map(node => node.frontmatter.date)
+          const maxDate = dates.sort().reverse()[0]
+
+          const homePage = {
+            path: "/",
+            priority: 0.7,
+            lastmod: maxDate,
+          }
+
+          return [...blogPosts, homePage]
+        },
+        serialize: ({ path, ...args }) => ({ url: path, ...args }),
       },
     },
   ],
