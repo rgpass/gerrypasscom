@@ -190,7 +190,7 @@ module.exports = {
         }`,
         resolvePages: ({ allMdx }) => {
           const blogPosts = allMdx.nodes.map(node => ({
-            path: node.fields.slug,
+            path: `blog${node.fields.slug}`,
             lastmod: node.frontmatter.date,
             changefreq: "weekly",
             priority: 0.7,
