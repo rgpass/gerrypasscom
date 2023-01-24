@@ -22,7 +22,7 @@ export const Post: FC<Props> = ({ post }) => {
       transitionTimingFunction="ease-out"
       _hover={{ bg: "gray.100", transform: "scale(1.025, 1.025)" }}
     >
-      <Link to={post.fields.slug} itemProp="url">
+      <Link to={`/blog${post.fields.slug}`} itemProp="url">
         <Stack spacing="2">
           <Stack spacing="1">
             <Accent fontSize="sm">{post.frontmatter.date}</Accent>
