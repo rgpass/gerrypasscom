@@ -9,7 +9,7 @@ interface Props {
 export const RootHeader: FC<Props> = ({ title }) => {
   return (
     <Stack as="header" spacing="4">
-      <Stack spacing="1">
+      <Stack spacing="1.5">
         <Text
           color="brand.600"
           fontSize={{ base: "sm", md: "md" }}

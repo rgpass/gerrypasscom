@@ -24,7 +24,7 @@ const Layout: FC<Props> = ({ children, location, title }) => {
     <Flex align="center" justify="center" w="full">
       <Flex
         direction="column"
-        gap={12}
+        gap={8}
         maxW="3xl"
         px={{ base: 4, md: 8 }}
         py="8"

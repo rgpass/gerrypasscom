@@ -9,6 +9,7 @@
     "@chakra-ui/react": "^2.4.7",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@fontsource/inter": "^4.5.15",
     "@fontsource/merriweather": "^4.5.14",
     "@fontsource/montserrat": "^4.5.13",
     "@mdx-js/react": "^2.2.1",
