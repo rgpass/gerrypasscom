@@ -265,6 +265,7 @@ function Photos() {
   )
 }
 
+// TODO: Component for the links here
 export default async function Home() {
   let articles = (await getAllArticles()).slice(0, 4)
 
@@ -273,13 +274,33 @@ export default async function Home() {
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Software designer, founder, and amateur astronaut.
+            Software developer, newbie designer, startup enthusiast.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Spencer, a software designer and entrepreneur based in New York
-            City. I’m the founder and CEO of Planetaria, where we develop
-            technologies that empower regular people to explore space on their
-            own terms.
+            I&apos;m Gerry Pass, a software developer and startup-enthusiast
+            based in Atlanta, GA. I was the first employee at{' '}
+            <a href="https://florencehc.com/" target="_blank">
+              Florence Healthcare
+            </a>{' '}
+            and I&apos;m currently working as a consultant at{' '}
+            <a href="https://www.thisisartium.com/" target="_blank">
+              Artium
+            </a>
+            . While I specialize in full-stack web development, I&apos;ve{' '}
+            <a
+              href="https://apps.apple.com/ca/app/freshmarx-temp-task/id1446320490"
+              target="_blank"
+            >
+              made a mobile app for a Fortune 500 company
+            </a>
+            , created{' '}
+            <a
+              href="https://www.figma.com/community/file/1165011419818730112/Chakra-UI-unofficial-UI-kit"
+              target="_blank"
+            >
+              a Figma component library with 600+ downloads
+            </a>
+            , and have taught & mentored dozens of aspiring developers.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
