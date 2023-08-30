@@ -7,12 +7,11 @@ import '@/styles/tailwind.css'
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Spencer Sharp',
-    default:
-      'Spencer Sharp - Software designer, founder, and amateur astronaut',
+    template: '%s - Gerry Pass',
+    default: 'Gerry Pass - Software designer, founder, and amateur astronaut',
   },
   description:
-    'I’m Spencer, a software designer and entrepreneur based in New York City. I’m the founder and CEO of Planetaria, where we develop technologies that empower regular people to explore space on their own terms.',
+    'I’m Gerry Pass, a software developer and startup-enthusiast based in Atlanta, GA. I was the first employee at Florence Healthcare and I’m currently working as a consultant at Artium. While I specialize in full-stack web development, I’ve made a mobile app for a Fortune 500 company, created a Figma component library with 600+ downloads, and have taught & mentored dozens of aspiring developers.',
   alternates: {
     types: {
       'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,

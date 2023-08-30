@@ -286,12 +286,12 @@ export default async function Home() {
             <a href="https://www.thisisartium.com/" target="_blank">
               Artium
             </a>
-            . While I specialize in full-stack web development, I&apos;ve{' '}
+            . While I specialize in full-stack web development, I&apos;ve made{' '}
             <a
               href="https://apps.apple.com/ca/app/freshmarx-temp-task/id1446320490"
               target="_blank"
             >
-              made a mobile app for a Fortune 500 company
+              a mobile app for a Fortune 500 company
             </a>
             , created{' '}
             <a
