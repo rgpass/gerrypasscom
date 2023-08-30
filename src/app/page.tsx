@@ -5,12 +5,7 @@ import clsx from 'clsx'
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
-import {
-  GitHubIcon,
-  InstagramIcon,
-  LinkedInIcon,
-  TwitterIcon,
-} from '@/components/SocialIcons'
+import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
 import logoAirbnb from '@/images/logos/airbnb.svg'
 import logoFacebook from '@/images/logos/facebook.svg'
 import logoPlanetaria from '@/images/logos/planetaria.svg'
@@ -239,6 +234,8 @@ function Resume() {
 }
 
 function Photos() {
+  return null
+
   let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
 
   return (
@@ -265,7 +262,6 @@ function Photos() {
   )
 }
 
-// TODO: Component for the links here
 export default async function Home() {
   let articles = (await getAllArticles()).slice(0, 4)
 
@@ -276,50 +272,30 @@ export default async function Home() {
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
             Software developer, newbie designer, startup enthusiast.
           </h1>
-          <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+          <p className="prose mt-6 text-base text-zinc-600 dark:prose-invert dark:text-zinc-400">
             I&apos;m Gerry Pass, a software developer and startup-enthusiast
             based in Atlanta, GA. I was the first employee at{' '}
-            <a href="https://florencehc.com/" target="_blank">
-              Florence Healthcare
-            </a>{' '}
-            and I&apos;m currently working as a consultant at{' '}
-            <a href="https://www.thisisartium.com/" target="_blank">
-              Artium
-            </a>
-            . While I specialize in full-stack web development, I&apos;ve made{' '}
-            <a
-              href="https://apps.apple.com/ca/app/freshmarx-temp-task/id1446320490"
-              target="_blank"
-            >
+            <a href="https://florencehc.com/">Florence Healthcare</a> and
+            I&apos;m currently working as a consultant at{' '}
+            <a href="https://www.thisisartium.com/">Artium</a>. While I
+            specialize in full-stack web development, I&apos;ve made{' '}
+            <a href="https://apps.apple.com/ca/app/freshmarx-temp-task/id1446320490">
               a mobile app for a Fortune 500 company
             </a>
             , created{' '}
-            <a
-              href="https://www.figma.com/community/file/1165011419818730112/Chakra-UI-unofficial-UI-kit"
-              target="_blank"
-            >
+            <a href="https://www.figma.com/community/file/1165011419818730112/Chakra-UI-unofficial-UI-kit">
               a Figma component library with 600+ downloads
             </a>
             , and have taught & mentored dozens of aspiring developers.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
-              href="https://twitter.com"
-              aria-label="Follow on Twitter"
-              icon={TwitterIcon}
-            />
-            <SocialLink
-              href="https://instagram.com"
-              aria-label="Follow on Instagram"
-              icon={InstagramIcon}
-            />
-            <SocialLink
-              href="https://github.com"
+              href="https://github.com/rgpass"
               aria-label="Follow on GitHub"
               icon={GitHubIcon}
             />
             <SocialLink
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/gerry-pass-11379340/"
               aria-label="Follow on LinkedIn"
               icon={LinkedInIcon}
             />
