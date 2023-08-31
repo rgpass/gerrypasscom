@@ -78,6 +78,44 @@ export default function Uses() {
           </Tool>
         </ToolsSection>
 
+        <ToolsSection title="Browser Extensions">
+          <Tool title="1Password">
+            The extension that pairs with the desktop app for easily storing and
+            populating passwords.
+          </Tool>
+          <Tool title="Loom">
+            I&apos;ve been using Loom since they were pre-revenue and I
+            haven&apos;t found a reason to switch.
+          </Tool>
+        </ToolsSection>
+
+        <ToolsSection title="Productivity">
+          <Tool title="Notion">
+            I&apos;ve been using Notion for a few years now and it&apos;s been
+            great. I use it as a second brain and as a Getting Stuff Done
+            methodology organizer.
+          </Tool>
+          <Tool title="Project EVO Planner">
+            The EVO Planner is a simple, yet effective, way of short-term goal
+            setting, project tracking, and daily todo list organizer. It&apos;s
+            been immensely helpful in getting my day started on the right foot.
+          </Tool>
+          <Tool title="Raycast">
+            Raycast is a Spotlight replacement that&apos;s built for power
+            users. There&apos;s a store where you can download free integrations
+            that make it super powerful. The one I use the most is the image
+            format converter and the mapping of snippets. ex. When I type{' '}
+            <span className="prose dark:prose-invert">
+              <code className="m-0">||e</code>
+            </span>{' '}
+            into any field, it replaces it with{' '}
+            <span className="prose dark:prose-invert">
+              <code className="m-0">rgpass@gmail.com</code>
+            </span>
+            .
+          </Tool>
+        </ToolsSection>
+
         {/* <ToolsSection title="Development tools">
           <Tool title="Sublime Text 4">
             I don’t care if it’s missing all of the fancy IDE features everyone
@@ -138,8 +176,17 @@ export default function Uses() {
           <Tool title="Apple Magic Trackpad">
             I&apos;ve always been a fan of the multiple desktops. The trackpad
             and four-finger swipe makes it so easy to switch between them.
-            Anytime I see someone on a Mac using <code>Alt</code>+
-            <code>Tab</code> I just assume they don&apos;t know about this.
+            Anytime I see someone on a Mac using{' '}
+            <span className="whitespace-nowrap">
+              <span className="prose dark:prose-invert">
+                <code className="m-0">Alt</code>
+              </span>
+              +
+              <span className="prose dark:prose-invert">
+                <code className="m-0">Tab</code>
+              </span>
+            </span>{' '}
+            I just assume they don&apos;t know about this.
           </Tool>
           {/* TODO: Chair */}
           {/* TODO: Desk */}
