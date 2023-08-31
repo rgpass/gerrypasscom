@@ -3,6 +3,7 @@ import Image from 'next/image'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
+import logoChakra from '@/images/logos/chakra.png'
 import logoPlz from '@/images/logos/plz.svg'
 import logoFlossSchedule from '@/images/logos/floss-schedule.png'
 
@@ -14,8 +15,17 @@ const projects = [
     logo: logoPlz,
   },
   {
+    name: 'Chakra UI unofficial UI kit for Figma',
+    description: 'A Figma UI kit for Chakra UI using the newest Figma features',
+    link: {
+      href: 'https://www.figma.com/community/file/1165011419818730112/Chakra-UI-unofficial-UI-kit',
+      label: 'figma.com',
+    },
+    logo: logoChakra,
+  },
+  {
     name: 'Floss Schedule',
-    description: 'An IoT project for tracking my flossing habit',
+    description: 'An IoT project for tracking my flossing dates and durations',
     link: {
       href: 'https://github.com/rgpass/floss-schedule',
       label: 'github.com',
