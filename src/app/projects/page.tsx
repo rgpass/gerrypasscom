@@ -5,7 +5,7 @@ import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import logoChakra from '@/images/logos/chakra.png'
 import logoPlz from '@/images/logos/plz.svg'
-import logoFlossSchedule from '@/images/logos/floss-schedule.png'
+import logoFlossSchedule from '@/images/logos/floss-schedule.svg'
 
 const projects = [
   {
