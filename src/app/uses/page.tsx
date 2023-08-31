@@ -168,6 +168,13 @@ export default function Uses() {
             Their lack of design seems intentional so you can focus on the wide
             feature set.
           </Tool>
+          <Tool title="OpenAI">
+            Once GPT-4 was released, I became obsessed with AI. Ask my wife and
+            she&apos;ll immediately roll her eyes and say, &ldquo;Oh my God.
+            That&apos;s all he talks about!&rdquo; I use it for everything, from
+            having a programming tutor for new languages all the way to a
+            cognitive behavioral therapist.
+          </Tool>
           <Tool title="Pop">
             If you liked Screenhero, you&apos;ll love Pop. Pop is actually made
             by the creator of Screenhero. It&apos;s a free alternative to Tuple
