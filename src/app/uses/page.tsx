@@ -58,6 +58,36 @@ export default function Uses() {
           </Tool>
         </ToolsSection>
 
+        <ToolsSection title="CLIs">
+          <Tool title="asdf">
+            Before asdf, I used Volta to manage package management versioning.
+            But it was always a hodge-podge of different version managers. asdf
+            wraps them all into one.
+          </Tool>
+          <Tool title="GitHub CLI">
+            GitHub released its own CLI and it&apos;s awesome. With it, you can
+            do pretty much everything you can do on the UI. Personally, I use it
+            for PR management.
+          </Tool>
+          <Tool title="Homebrew">
+            The package manager for macOS. I use it to install pretty much
+            everything, including other CLIs in the list and the apps in the
+            next section.
+          </Tool>
+          <Tool title="oh-my-zsh">
+            I don&apos;t know how anyone uses anything but zsh and oh-my-zsh is
+            a great set of defaults and plugins for it, such as git.
+          </Tool>
+          <Tool title="z">
+            A &ldquo;frecency&rdquo; based directory jumper. It&apos;s the next
+            evolution of the{' '}
+            <span className="prose dark:prose-invert">
+              <code className="m-0">cd</code>
+            </span>{' '}
+            command.
+          </Tool>
+        </ToolsSection>
+
         <ToolsSection title="Desktop Apps">
           <Tool title="1Password">
             After{' '}
@@ -85,7 +115,7 @@ export default function Uses() {
           </Tool>
           <Tool title="Warp">
             Built with Rust and with a much stronger UX-focus, it&apos;s the
-            next evolution of terminals. I&apos;ve been using it for a few
+            next evolution of terminal apps. I&apos;ve been using it for a few
             months now and it&apos;s been great.
           </Tool>
         </ToolsSection>
