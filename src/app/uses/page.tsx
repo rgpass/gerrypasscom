@@ -229,6 +229,63 @@ export default function Uses() {
           </Tool>
         </ToolsSection>
 
+        <ToolsSection title="VS Code Extensions">
+          <Tool title="Auto Rename Tag">
+            Are you tired of changing a HTML tag from a{' '}
+            <span className="prose dark:prose-invert">
+              <code className="m-0">div</code>
+            </span>{' '}
+            to a{' '}
+            <span className="prose dark:prose-invert">
+              <code className="m-0">span</code>
+            </span>{' '}
+            and having to change the closing tag as well? This extension does
+            that for you.
+          </Tool>
+          <Tool title="Better Comments">
+            Applies different styles/colors to your comments based on the first
+            character. It makes it easier to differentiate &ldquo;TODO&rdquo;
+            comments from &ldquo;DO NOT DELETE&rdquo; comments.
+          </Tool>
+          <Tool title="ESLint">
+            No-brainer for any JavaScript or TypeScript development.
+          </Tool>
+          <Tool title="GitHub Copilot">
+            For $100 a year, you can practically double your productivity when
+            writing code. I don&apos;t know of another service that has a better
+            ROI.
+          </Tool>
+          <Tool title="indent-rainbow">
+            A small UI improvement that makes it easier to see how nested
+            something is.
+          </Tool>
+          <Tool title="Path Intellisense">
+            Another extension that should&apos;ve been included by default.
+          </Tool>
+          <Tool title="Prettier">
+            Auto-formatting on save. What&apos;s not to love?
+          </Tool>
+          <Tool title="Pretty TypeScript Errors">
+            TypeScript errors are notoriously difficult to read. This extension
+            fixes that.
+          </Tool>
+          <Tool title="open in browser">
+            The title says it all. Why was this not a default feature?
+          </Tool>
+          <Tool title="Rails Go to Spec">
+            If you&apos;re doing Ruby on Rails development with RSpec, this is a
+            must-have. With one shortcut, you can jump from a spec to its
+            implementation and vice versa.
+          </Tool>
+          <Tool title="Tailwind CSS IntelliSense">
+            Autocomplete for Tailwind classes. It&apos;s a must-have.
+          </Tool>
+          <Tool title="vscode-icons">
+            Adds more icons to VS Code. Really just stuff that should come by
+            default.
+          </Tool>
+        </ToolsSection>
+
         <ToolsSection title="Workstation">
           {/* TODO: Work computer */}
           <Tool title="16” MacBook Pro, M1 Pro, 16GB RAM (2021) (personal)">
