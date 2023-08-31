@@ -39,6 +39,7 @@ export const metadata = {
   description: 'Software I use, gadgets I love, and other things I recommend.',
 }
 
+// TODO: `Link` component and `Code` component
 export default function Uses() {
   return (
     <SimpleLayout
@@ -46,6 +47,17 @@ export default function Uses() {
       intro="I get asked a lot about the things I use to build software, stay productive, or buy to fool myself into thinking I’m being productive when I’m really just procrastinating. Here’s a big list of all of my favorite stuff, in alphabetical order."
     >
       <div className="space-y-20">
+        <ToolsSection title="Browser Extensions">
+          <Tool title="1Password">
+            The extension that pairs with the desktop app for easily storing and
+            populating passwords.
+          </Tool>
+          <Tool title="Loom">
+            I&apos;ve been using Loom since they were pre-revenue and I
+            haven&apos;t found a reason to switch.
+          </Tool>
+        </ToolsSection>
+
         <ToolsSection title="Desktop Apps">
           <Tool title="1Password">
             After{' '}
@@ -78,17 +90,6 @@ export default function Uses() {
           </Tool>
         </ToolsSection>
 
-        <ToolsSection title="Browser Extensions">
-          <Tool title="1Password">
-            The extension that pairs with the desktop app for easily storing and
-            populating passwords.
-          </Tool>
-          <Tool title="Loom">
-            I&apos;ve been using Loom since they were pre-revenue and I
-            haven&apos;t found a reason to switch.
-          </Tool>
-        </ToolsSection>
-
         <ToolsSection title="Productivity">
           <Tool title="Notion">
             I&apos;ve been using Notion for a few years now and it&apos;s been
@@ -116,50 +117,44 @@ export default function Uses() {
           </Tool>
         </ToolsSection>
 
-        {/* <ToolsSection title="Development tools">
-          <Tool title="Sublime Text 4">
-            I don’t care if it’s missing all of the fancy IDE features everyone
-            else relies on, Sublime Text is still the best text editor ever
-            made.
-          </Tool>
-          <Tool title="iTerm2">
-            I’m honestly not even sure what features I get with this that aren’t
-            just part of the macOS Terminal but it’s what I use.
-          </Tool>
-          <Tool title="TablePlus">
-            Great software for working with databases. Has saved me from
-            building about a thousand admin interfaces for my various projects
-            over the years.
-          </Tool>
-        </ToolsSection>
-        <ToolsSection title="Design">
+        <ToolsSection title="Services">
           <Tool title="Figma">
-            We started using Figma as just a design tool but now it’s become our
-            virtual whiteboard for the entire company. Never would have expected
-            the collaboration features to be the real hook.
+            Figma is a giant step up from Sketch and with its new Dev Mode,
+            it&apos;s dead simple to use it for design and development. Combine
+            Figma with{' '}
+            <span className="prose dark:prose-invert">
+              <a href="https://www.dive.club/advanced-figma">Academy</a>
+            </span>{' '}
+            and you can go from zero to poweruser in less than two weeks.
+          </Tool>
+          <Tool title="GitHub">
+            I&apos;ve been forced to use an alternative to GitHub once in my
+            career and it was rough. It&apos;s the best place to host your code
+            and the community is amazing. Since being acquired by Microsoft,
+            there&apos;s been a ton of improvements and freebies offered.
+          </Tool>
+          <Tool title="iwantmyname">
+            Dead-simple domain registrar. I&apos;ve been using them for years.
+            Their lack of design seems intentional so you can focus on the wide
+            feature set.
+          </Tool>
+          <Tool title="Pop">
+            If you liked Screenhero, you&apos;ll love Pop. Pop is actually made
+            by the creator of Screenhero. It&apos;s a free alternative to Tuple
+            but has a few less features. Definitely worth checking out if
+            you&apos;re looking to pair program.
+          </Tool>
+          <Tool title="Tuple">
+            Tuple is the best service in town for pair programming.
+            Feature-rich, but costs money. My suggestion: if your employer will
+            cover it, then it&apos;s a no-brainer.
+          </Tool>
+          <Tool title="Vercel">
+            I used to be obsessed with Heroku and Vercel is the next evolution.
+            The only downside is that it&apos;s taken away any motivation I have
+            to <span className="italic">finally</span> learn AWS.
           </Tool>
         </ToolsSection>
-        <ToolsSection title="Productivity">
-          <Tool title="Alfred">
-            It’s not the newest kid on the block but it’s still the fastest. The
-            Sublime Text of the application launcher world.
-          </Tool>
-          <Tool title="Reflect">
-            Using a daily notes system instead of trying to keep things
-            organized by topics has been super powerful for me. And with
-            Reflect, it’s still easy for me to keep all of that stuff
-            discoverable by topic even though all of my writing happens in the
-            daily note.
-          </Tool>
-          <Tool title="SavvyCal">
-            Great tool for scheduling meetings while protecting my calendar and
-            making sure I still have lots of time for deep work during the week.
-          </Tool>
-          <Tool title="Focus">
-            Simple tool for blocking distracting websites when I need to just do
-            the work and get some momentum going.
-          </Tool>
-        </ToolsSection> */}
 
         <ToolsSection title="Workstation">
           {/* TODO: Work computer */}
