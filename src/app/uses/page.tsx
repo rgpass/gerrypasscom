@@ -186,6 +186,42 @@ export default function Uses() {
           </Tool>
         </ToolsSection>
 
+        <ToolsSection title="Tech">
+          <Tool title="Cypress">
+            Given that my old office was on the same floor as Cypress, it will
+            always have a special place in my heart. But word is that Playwright
+            is the new hotness.
+          </Tool>
+          <Tool title="NextJS">
+            I just started using Next and I&apos;m convinced it&apos;s the best
+            frontend framework out there, especially for React. Given that the
+            React team recommends it over Create React App, I&apos;m not alone.
+          </Tool>
+          <Tool title="Prettier">
+            So much time saved with this tool. I was patiently waiting for a
+            Ruby plugin and was so happy when it was finally released.
+          </Tool>
+          <Tool title="React">
+            The most popular frontend library and will be for a long time.
+            &ldquo;My current job uses React and my next job will use
+            React.&rdquo;.
+          </Tool>
+          <Tool title="TailwindCSS">
+            (Not really a) Hot take: Tailwind is not only the best CSS
+            framework, but it&apos;s one of the best ways to level up your CSS
+            knowledge. With the Visual Studio Code extension, you can mouseover
+            classes and see what they do.
+          </Tool>
+          <Tool title="TypeScript">
+            It&apos;s 2023, you better be using TypeScript.
+          </Tool>
+          <Tool title="Vitest">
+            Even if you&apos;re not using Vite, use Vitest. After using it for
+            awhile, you&apos;ll start asking, &ldquo;Why does anyone still use
+            Jest?&rdquo;
+          </Tool>
+        </ToolsSection>
+
         <ToolsSection title="Workstation">
           {/* TODO: Work computer */}
           <Tool title="16” MacBook Pro, M1 Pro, 16GB RAM (2021) (personal)">
