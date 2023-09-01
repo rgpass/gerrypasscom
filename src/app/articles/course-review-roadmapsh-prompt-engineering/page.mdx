@@ -1,0 +1,74 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+
+export const article = {
+  author: 'Gerry Pass',
+  date: '2023-09-01',
+  title: "Course review: roadmap.sh's Prompt Engineering Roadmap",
+  description:
+    'roadmap.sh has learning paths for everything related to software development. I went through their Prompt Engineering Roadmap and wanted to share my thoughts.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+If you've been wondering what all the buzz is about around prompt engineering (or even asking, "lol, is this actually a thing?"), LLM's, and AI in general, then roadmap.sh's Prompt Engineering Roadmap is a great place to start. Here's my concise review of the course.
+
+## Summary
+
+The course covers the basics: what a LLM is, what prompt engineering is, why it's needed, and strategies. It's a course you can go start-to-finish in a couple of hours, unless you're like me and want to read every link and watch every video. But it's essentially a lighter, visual wrapper around [Learn Prompting](https://learnprompting.org/), which is where you'll want to go if you know you want to improve your prompt engineering skills.
+
+## Relevance to the Industry: 9/10
+
+- Prompt engineering jobs aren't plentiful, but knowing how to write effective prompts can be a huge advantage in your career
+- It's a skill that's becoming increasingly important as AI becomes more prevalent in our lives
+- It's a future-proof skill since people will always need to guide AI
+
+## Scope: 7/10
+
+- Covers the majority of topics (that I'm aware of) related to prompt engineering
+- Does not cover image generation (DALL-E, Midjourney, Stable Diffusion)
+- Does not cover model differences (GPT-3.5 vs GPT-4 vs LLaMA)
+- Does not cover LangChain or other LLM frameworks
+
+## Technical Depth: 7/10
+
+- It's a great start for beginners, but it's not a deep dive
+- Missing examples for the majority of topics
+- Suggested reading for each topic almost always links to [Learn Prompting](https://learnprompting.org/) and no other resources
+- Does cover the pitfalls of prompt engineering and strategies to avoid them
+
+## Hands-on Coding: 2/10
+
+- There are no hands-on coding exercises
+- Does not cover how to run the examples it does have
+- Requires you to copy-paste code snippets into ChatGPT
+
+## Quality of Code Examples: 6/10
+
+- The examples are covered well, but again, it's essentially just [Learn Prompting](https://learnprompting.org/)'s content
+- But the code snippets do not wrap, so they're almost unreadable unless you copy them into an editor
+- For some reason, it doesn't cover all of [Learn Prompting](https://learnprompting.org/)'s content, so you'll have to go there to see the rest
+
+## Community Support: 10/10
+
+- roadmap.sh's platform asks users to submit links to resources, so it's constantly evolving
+- roadmap.sh is open-source, so anyone can contribute
+- roadmap.sh has a Discord server with 700+ members
+
+## Updates: 3/10
+
+- Need to go to GitHub to see when the last update was made
+- The roadmap was created May 19th, 2023, and since then has only had 9 updates in over 3 months
+- Given that it's an evolving field, I would expect updates much more frequently
+
+## Final Verdict: 6/10
+
+- Take it if you're looking for an intro into prompt engineering
+- If you want a proper course on prompt engineering, go to [Learn Prompting](https://learnprompting.org/)
+
+That's it, folks. Hope this helps you decide whether this course is your jam or not. Cheers!
