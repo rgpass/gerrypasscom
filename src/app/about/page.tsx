@@ -88,7 +88,7 @@ export default function About() {
 
             <p>
               A couple years later when I was a junior, I was working on a
-              homework assignment that could&apos;ve build solved in less than
+              homework assignment that could&apos;ve been solved in less than
               100 lines of code. Instead, I made a{' '}
               <span className="italic">giant</span> Excel file that spanned
               multiple sheets. My classmates who did it programmatically
