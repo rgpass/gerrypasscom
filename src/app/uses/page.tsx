@@ -286,11 +286,16 @@ export default function Uses() {
         </ToolsSection>
 
         <ToolsSection title="Workstation">
-          {/* TODO: Work computer */}
           <Tool title="16” MacBook Pro, M1 Pro, 16GB RAM (2021) (personal)">
             This is an amazing product. Even considering the hiccups that came
             with having a different architecture, it&apos;s still the best
             computer I&apos;ve used (excluding my work M2 Pro).
+          </Tool>
+          <Tool title="16” MacBook Pro, M2 Pro, 32GB RAM (2023) (work)">
+            I thought my personal computer was fast, but this thing is a beast.
+            With two external displays (so three screens total), all my normal
+            apps, and a 13B parameter LLM all running at the same time, I have
+            still yet to hear the fans.
           </Tool>
           <Tool title="Apple Magic Keyboard with Touch ID">
             This has been my go-to keyboard for years and using Touch ID saves
@@ -312,10 +317,28 @@ export default function Uses() {
             </span>{' '}
             I just assume they don&apos;t know about this.
           </Tool>
-          {/* TODO: Chair */}
-          {/* TODO: Desk */}
-          {/* TODO: Monitors */}
-          {/* TODO: Balance board */}
+          <Tool title="Dell S2722QC 27-inch 4K USB-C Monitor">
+            Not the best monitor, but it gets the job done. I was allowed to
+            reimburse up to $500 when I started at Artium, so I went with two of
+            these and spent a little bit of my own money. Now I feel like a pro.
+          </Tool>
+          <Tool title="FEZIBO Standing Desk Anti-Fatigue Balance Board">
+            Whenever I&apos;m standing at my desk, I&apos;m standing on this. If
+            I don&apos;t, my back feels it the next day. Would recommend this to
+            anyone who has a standing desk.
+          </Tool>
+          <Tool title="Flexispot Pro+ Standing Desk E7">
+            This desk is awesome. It&apos;s motorized, has three memory slots,
+            and it&apos;s built to be customizable. I went with white to make it
+            obvious when I need to clean it.
+          </Tool>
+          <Tool title="GABRYLLY Ergonomic Mesh Office Chair">
+            Before I bought this chair, my poor back was suffering. And it was
+            unprofessional looking. This is the exact opposite. It&apos;s
+            comfortable, professional, and it&apos;s mesh so it&apos;s
+            breathable. The only downside is that it&apos;s so comfortable, I
+            don&apos;t want to stand up.
+          </Tool>
         </ToolsSection>
       </div>
     </SimpleLayout>
