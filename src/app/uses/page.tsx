@@ -39,7 +39,6 @@ export const metadata = {
   description: 'Software I use, gadgets I love, and other things I recommend.',
 }
 
-// TODO: `Link` component and `Code` component
 export default function Uses() {
   return (
     <SimpleLayout
