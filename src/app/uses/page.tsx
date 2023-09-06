@@ -5,7 +5,7 @@ import { SimpleLayout } from '@/components/SimpleLayout'
 
 function Code({ children }: { children: React.ReactNode }) {
   return (
-    <ProseInline>
+    <ProseInline className="leading-6">
       <code className="m-0">{children}</code>
     </ProseInline>
   )
