@@ -212,6 +212,12 @@ export default function Uses() {
             &ldquo;My current job uses React and my next job will use
             React.&rdquo;.
           </Tool>
+          <Tool title="Ruby on Rails">
+            When I started, I knew I wanted to work with startups, so I chose
+            Ruby on Rails. It&apos;s been my go-to backend framework ever since.
+            But I&apos;m looking for a change, just not sure what to focus on
+            yet.
+          </Tool>
           <Tool title="TailwindCSS">
             (Not really a) Hot take: Tailwind is not only the best CSS
             framework, but it&apos;s one of the best ways to level up your CSS
