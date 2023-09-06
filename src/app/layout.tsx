@@ -8,7 +8,8 @@ import '@/styles/tailwind.css'
 export const metadata: Metadata = {
   title: {
     template: '%s - Gerry Pass',
-    default: 'Gerry Pass - Software designer, founder, and amateur astronaut',
+    default:
+      'Gerry Pass - Software developer, newbie designer, and startup enthusiast',
   },
   description:
     'I’m Gerry Pass, a software developer and startup-enthusiast based in Atlanta, GA. I was the first employee at Florence Healthcare and I’m currently working as a consultant at Artium. While I specialize in full-stack web development, I’ve made a mobile app for a Fortune 500 company, created a Figma component library with 600+ downloads, and have taught & mentored dozens of aspiring developers.',
