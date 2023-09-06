@@ -2,6 +2,14 @@ import { Card } from '@/components/Card'
 import { Section } from '@/components/Section'
 import { SimpleLayout } from '@/components/SimpleLayout'
 
+function Code({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="prose dark:prose-invert">
+      <code className="m-0">{children}</code>
+    </span>
+  )
+}
+
 function ToolsSection({
   children,
   ...props
@@ -79,11 +87,7 @@ export default function Uses() {
           </Tool>
           <Tool title="z">
             A &ldquo;frecency&rdquo; based directory jumper. It&apos;s the next
-            evolution of the{' '}
-            <span className="prose dark:prose-invert">
-              <code className="m-0">cd</code>
-            </span>{' '}
-            command.
+            evolution of the <Code>cd</Code> command.
           </Tool>
         </ToolsSection>
 
@@ -135,14 +139,8 @@ export default function Uses() {
             users. There&apos;s a store where you can download free integrations
             that make it super powerful. The one I use the most is the image
             format converter and the mapping of snippets. ex. When I type{' '}
-            <span className="prose dark:prose-invert">
-              <code className="m-0">||e</code>
-            </span>{' '}
-            into any field, it replaces it with{' '}
-            <span className="prose dark:prose-invert">
-              <code className="m-0">rgpass@gmail.com</code>
-            </span>
-            .
+            <Code>||e</Code> into any field, it replaces it with{' '}
+            <Code>rgpass@gmail.com</Code>.
           </Tool>
         </ToolsSection>
 
@@ -236,16 +234,9 @@ export default function Uses() {
 
         <ToolsSection title="VS Code Extensions">
           <Tool title="Auto Rename Tag">
-            Are you tired of changing a HTML tag from a{' '}
-            <span className="prose dark:prose-invert">
-              <code className="m-0">div</code>
-            </span>{' '}
-            to a{' '}
-            <span className="prose dark:prose-invert">
-              <code className="m-0">span</code>
-            </span>{' '}
-            and having to change the closing tag as well? This extension does
-            that for you.
+            Are you tired of changing a HTML tag from a <Code>div</Code> to a{' '}
+            <Code>span</Code> and having to change the closing tag as well? This
+            extension does that for you.
           </Tool>
           <Tool title="Better Comments">
             Applies different styles/colors to your comments based on the first
@@ -313,13 +304,7 @@ export default function Uses() {
             and four-finger swipe makes it so easy to switch between them.
             Anytime I see someone on a Mac using{' '}
             <span className="whitespace-nowrap">
-              <span className="prose dark:prose-invert">
-                <code className="m-0">Alt</code>
-              </span>
-              +
-              <span className="prose dark:prose-invert">
-                <code className="m-0">Tab</code>
-              </span>
+              <Code>Alt</Code>+<Code>Tab</Code>
             </span>{' '}
             I just assume they don&apos;t know about this.
           </Tool>

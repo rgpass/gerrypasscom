@@ -3,7 +3,7 @@
 ## TODOs
 
 - Meta: Add `sitemap.xml`
-- Uses page: `Link` component and `Code` component
+- Uses page: `Code` component
 - Projects page: add date for context on how long ago it was done
 - Home page: Add images
 - Home page: Add overview of work history
