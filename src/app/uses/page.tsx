@@ -1,12 +1,13 @@
 import { Card } from '@/components/Card'
+import { ProseInline } from '@/components/Prose'
 import { Section } from '@/components/Section'
 import { SimpleLayout } from '@/components/SimpleLayout'
 
 function Code({ children }: { children: React.ReactNode }) {
   return (
-    <span className="prose dark:prose-invert">
+    <ProseInline>
       <code className="m-0">{children}</code>
-    </span>
+    </ProseInline>
   )
 }
 
@@ -94,11 +95,11 @@ export default function Uses() {
         <ToolsSection title="Desktop Apps">
           <Tool title="1Password">
             After{' '}
-            <span className="prose dark:prose-invert">
+            <ProseInline>
               <a href="https://blog.lastpass.com/2022/12/notice-of-recent-security-incident/">
                 LastPass&apos; security breach
               </a>
-            </span>
+            </ProseInline>
             , I switched to 1Password and have only good things to say. I use
             the premium version to shave a few seconds off when needing to input
             passwords on both my computer and phone.
@@ -149,9 +150,9 @@ export default function Uses() {
             Figma is a giant step up from Sketch and with its new Dev Mode,
             it&apos;s dead simple to use it for design and development. Combine
             Figma with{' '}
-            <span className="prose dark:prose-invert">
+            <ProseInline>
               <a href="https://www.dive.club/advanced-figma">Academy</a>
-            </span>{' '}
+            </ProseInline>{' '}
             and you can go from zero to poweruser in less than two weeks.
           </Tool>
           <Tool title="GitHub">
