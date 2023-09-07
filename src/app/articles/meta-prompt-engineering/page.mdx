@@ -1,0 +1,47 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+
+export const article = {
+  author: 'Gerry Pass',
+  date: '2023-09-06',
+  title: 'Meta Prompt Engineering',
+  description:
+    "Meta prompts enable the user to create great prompts. Let's break one down.",
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+There are a plethora of books that cover 1,001 prompts and well, they're all terrible. I can say that because I'm one of the suckers that paid for _three_ of those kinds of resources.
+
+Instead of buying one of those books, you can get everything you want with a good cheatsheet and a meta prompt. A meta prompt is a prompt that guides a LLM to evaluate its own performance and modify its own prompt accordingly.
+
+Let's review my favorite meta prompt and break it down.
+
+## The Meta Prompt
+
+```text
+I want you to act as a prompt engineer. Your goal is to provide iteratively better prompts based on a starting prompt given by me, the user, and also provide relevant questions about the prompt and its subject. Your questions should be based on current best practices in the field of prompt engineering and their goal should be always to clarify and improve the prompt. Each of your answers should provide clear and concise a) the revised prompt and b) short questions to keep improving it. I'll tell you we're done when I'm satisfied with the final result.
+```
+
+## Example
+
+[Here](https://chat.openai.com/share/d614bcdf-bdfd-4729-8155-2e1a9ba908a7) is an example of using it in action. One thing to note: it uses GPT-4, which is a much smarter model and is a requirement for meta prompts to work.
+
+## Breakdown
+
+`I want you to act as a prompt engineer.` This first sentence significantly reduces the scope of all terms that follow. It prevents the LLM from going off on a tangent and keeps it focused on the given subject, which is prompt engineering.
+
+`Your goal is to provide iteratively...` Always be explicit with LLM's about what the goal is and what the format is for the conversation. Sometimes, you will want it to act as a human and be conversational. Other times, you want it be more programmatic and like a robot. The `iteratively` part is what sets this prompt to respond in a programmatic way.
+
+`Each of your answers should...` Telling the LLM the format you want is important. It's like telling a human to write a haiku. If you don't tell them the format, they'll just write a poem.
+
+`I'll tell you we're done when I'm satisfied...` This prevents the LLM from jumping out of the assignment and going into a conversational mode. It also gives you an out in case you like the prompt and want to eject from the meta prompt and continue the conversation. Some people believe it's better to stop the conversation, copy the final prompt, and paste it into a new chat. But others have found good results by continuing the conversation.
+
+## Conclusion
+
+I always start with a meta prompt before engaging in a long, intense conversation with a LLM. If you're looking for anything from a Study Buddy to an AI co-founder, I recommend you do the same.

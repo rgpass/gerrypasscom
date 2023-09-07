@@ -45,3 +45,13 @@ pre[class*='language-'] {
 .token.combinator {
   color: theme('colors.zinc.400');
 }
+
+/* My modifications */
+code.language-text {
+  white-space: pre-wrap !important;
+  word-break: break-word;
+}
+
+p > code {
+  line-height: 1.5rem;
+}
