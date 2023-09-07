@@ -3,6 +3,7 @@
 ## TODOs
 
 - Meta: Add `sitemap.xml`
+- Meta: Remove RSS feed
 - Home page: Add images
 - Home page: Add overview of work history
 - Home page: Add ability to download resume
