@@ -202,6 +202,10 @@ export default function Uses() {
             frontend framework out there, especially for React. Given that the
             React team recommends it over Create React App, I&apos;m not alone.
           </Tool>
+          <Tool title="PostgreSQL">
+            Postgres is my database of choice. It&apos;s free and widely
+            supported.
+          </Tool>
           <Tool title="Prettier">
             So much time saved with this tool. I was patiently waiting for a
             Ruby plugin and was so happy when it was finally released.
