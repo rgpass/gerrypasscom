@@ -6,3 +6,11 @@ export function formatDate(dateString: string) {
     timeZone: 'UTC',
   })
 }
+
+export function formatMonth(dateString: string) {
+  return new Date(`${dateString}T00:00:00Z`).toLocaleDateString('en-US', {
+    month: 'short',
+    year: '2-digit',
+    timeZone: 'UTC',
+  })
+}

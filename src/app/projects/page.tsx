@@ -6,6 +6,7 @@ import { SimpleLayout } from '@/components/SimpleLayout'
 import logoChakra from '@/images/logos/chakra.png'
 import logoPlz from '@/images/logos/plz.svg'
 import logoFlossSchedule from '@/images/logos/floss-schedule.svg'
+import { formatMonth } from '@/lib/formatDate'
 
 const projects = [
   {
@@ -73,6 +74,11 @@ export default function Projects() {
             <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
               <Card.Link href={project.link.href}>{project.name}</Card.Link>
             </h2>
+            {/* {project.date && (
+              <time className="text-sm text-zinc-400 dark:text-zinc-500">
+                {formatMonth(project.date)}
+              </time>
+            )} */}
             <Card.Description>{project.description}</Card.Description>
             <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
               <LinkIcon className="h-6 w-6 flex-none" />
