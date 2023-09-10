@@ -1,0 +1,123 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+
+export const article = {
+  author: 'Gerry Pass',
+  date: '2023-09-10',
+  title: 'ChatGPT Custom Instructions Personas',
+  description:
+    "ChatGPT's Custom Instructions feature allows you to consistently customize your responses without using any context tokens. This article covers how I use this feature via my own unique personas.",
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+ChatGPT's Custom Instructions feature allows you to consistently customize your responses without using any context tokens. Normally, if you wanted it to respond a certain way, such as using bullet points by default, or in a concise manner, you would have to outline that in your prompt. This was annoying for two reasons: (1) you had to do it every time, even if you wanted it that way for every single message, (2) it took away from the invalube token limit. Now, you can set this once and move on.
+
+After reading about this feature and best practices, the main concept that emerged was that we can leverage user personas to help ChatGPT understand how to respond. This article covers how I use this feature via my own unique personas.
+
+## Self Personas
+
+When I interact with ChatGPT, I'm usually doing it from one of three personas:
+
+- Family Man
+- Web Developer
+- Technical Cofounder
+
+While the first two were obvious to me and I came up with on my own, I wanted some help to determine if I was missing anything about myself. So I used this prompt:
+
+```text
+I want to figure out what my main user personas are about myself. Ask me questions to help create a list. When I'm done answering questions, I will say "done" and you will output the list of personas.
+```
+
+It's not the best prompt, but it got the job done.
+
+## Adding Details
+
+With these three personas, I needed to add details to improve the results. I'm no expert in user personas, particularly how they can be optimized for LLM's, so I stole the format from [The AI Advantage's video on Custom Instructions](https://www.youtube.com/watch?v=o4N1v0DnZdE).
+
+### "How would you like ChatGPT to respond?"
+
+Custom Instructions includes two parts:
+
+> What would you like ChatGPT to know about you to provide better responses?
+
+and
+
+> How would you like ChatGPT to respond?
+
+For the first question, I used the persona details listed later in this article. For the second, I have just one version that is used for all of the personas.
+
+```text
+Response Format: Please provide responses in a clear, structured manner, with important points summarized at the beginning. Bullet-points are preferred
+Tone: Maintain a casual tone that aims to connect with me as a human, not a working professional
+Detail Level: When giving an initial response, include minimal detail. When I ask for an elaboration, be thorough yet succinct
+Types of Suggestions: Offer suggestions for improvement, providing relevant resources, and highlighting macro trends
+Types of Questions: Ask questions that stimulate unique conversation and ideas, particularly ones related to me
+Checks and Balances: Please verify any statistics or trends you share against reliable sources
+Resource References: Cite sources when referencing macro trends or data
+Critical Thinking Level: Offer thoughtful insights and perspectives, showing a nuanced understanding of the topic being discussed
+Creativity Level: Balance time-tested, classical wisdom with innovative ideas that challenge conventional approaches
+Problem-Solving Approach: Take a strategic problem-solving approach, considering both short-term and long-term implications
+Bias Awareness: Please avoid favoring one strategy over another without valid reasons
+```
+
+It's generic enough to be useful for all of my personas, but specific enough to be tailored to my communication style and how I want to interact with ChatGPT.
+
+### Persona: Family Man
+
+For Family Man, I wanted to focus on my role as a father and husband, while intentionally ignoring any other facet of my life. I ended up with:
+
+```text
+Name: Gerry (37 year old man)
+Persona Summary: Family Man
+Profession/Role: I am a father of two: Kingston (4.5 year old boy) and Evie (1.5 year old girl). I am a husband to Kristin (36 year old woman)
+Current Projects/Challenges: Doubtful about my effectiveness as a dad and husband. Time is limited and it feels stressful to stay on top of all chores while still finding time to do fun things together as a family and as husband and wife
+Specific Interests: Raising my kids with the right values. Creating a tight family bond. Ensuring that my wife and kids know they are loved
+Values and Principles: "To whom much is given, much is expected." Listening, forgiving, having fun together, and instilling grit/toughness
+Related Personal Background: I am close relationship with my parents, step-parents, and sister. I am also fairly close with my wife's family, particularly my nephew and nieces
+Goals: Build a family that loves each other. Be a great dad who enables their children to be successful. Be a great husband who continues to try to impress his wife
+Communication Style: I prefer a casual tone with occasional emojis. I prefer concise communication in bullet-point format. I want to be asked questions to foster a proper conversation and unique ideas
+```
+
+### Persona: Web Developer
+
+The Web Developer persona was a little bit more difficult for me because it's closely intertwined with the Technical Cofounder persona. I ended up with:
+
+```text
+Name: Gerry (37 year old man)
+Persona Summary: Web Developer
+Profession/Role: I am a senior software engineer who specializes in web development
+Specific Interests: I enjoy wearing multiple hats, with the main being development. The other hats I really enjoy are design and product management
+Values and Principles: Doing things right is both cheaper and faster. Build things that can both change over time and will pass the test of time
+Related Personal Background: My main tech stack is React (via TypeScript) and Ruby on Rails. I normally have worked at startups, but I am currently working at Artium which is a software consulting company, similar to Pivotal. I was the first employee at Florence Healthcare which is now valued at $500 million. Most of the companies I have worked for have been in either healthcare or education
+Goals: Be a large contributor to making the world a better place through software. Actual make a positive impact on the world, not just make rich people richer
+Ideal Industries: Healthcare, education, environmental sustainability, positive psychology, longevity
+Communication Style: Let's keep it professional, yet friendly, with very limited usage of emojis. I prefer concise communication in bullet-point format. I want to be asked questions to foster a proper conversation and unique ideas
+```
+
+### Persona: Technical Cofounder
+
+The Technical Cofounder persona is different from the Web Developer persona because it's more focused on the business side of things. It also focuses more on building a product, regardless of the technical foundation.
+
+```text
+Name: Gerry (37 year old man)
+Persona Summary: Technical Cofounder
+Profession/Role: Technical cofounder. Senior software engineer who specializes in web development
+Specific Interests: On the technical side, web development, design, and product management. On the business side, generative AI, healthcare, education, environmental sustainability, positive psychology, longevity
+Values and Principles: Making the world a better place, not making rich people richer. Track the metrics that matter to the spirit of the business, such as user outcomes, over typical business metrics, such as revenue
+Related Personal Background: Most of my software experience is in healthcare or education. I was the first employee at Florence Healthcare which is now valued at $500 million
+Goals: Solve a real problem and improve the world. Build a solution that outlasts my lifetime
+Ideal Industries: Healthcare, education, environmental sustainability, positive psychology, longevity
+Communication Style: Let's keep it professional, yet friendly, with very limited usage of emojis. I prefer concise communication in bullet-point format. I want to be asked questions to foster a proper conversation and unique ideas
+```
+
+## Summary
+
+I've played around with these different personas in ChatGPT's Custom Instructions and have had good results so far. It's not perfect and will require more iteration, but it's already shown to give me a better experience. This has been evident in both the responses and that I don't have to keep typing out the same details over and over again.
+
+I'm excited to see how Custom Instructions evolves, both in terms of the feature and the best practices around using it. Hopefully this helps you get the most out of it as well.
