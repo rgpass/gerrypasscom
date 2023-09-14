@@ -11,12 +11,14 @@ import { formatMonth } from '@/lib/formatDate'
 const projects = [
   {
     name: 'plz',
+    date: '2023-06',
     description: 'A CLI for converting natural language to shell commands',
     link: { href: 'https://github.com/rgpass/plz', label: 'github.com' },
     logo: logoPlz,
   },
   {
     name: 'Chakra UI unofficial UI kit for Figma',
+    date: '2023-01',
     description: 'A Figma UI kit for Chakra UI using the newest Figma features',
     link: {
       href: 'https://www.figma.com/community/file/1165011419818730112/Chakra-UI-unofficial-UI-kit',
@@ -26,6 +28,7 @@ const projects = [
   },
   {
     name: 'Floss Schedule',
+    date: '2018-09',
     description: 'An IoT project for tracking my flossing dates and durations',
     link: {
       href: 'https://github.com/rgpass/floss-schedule',
@@ -33,6 +36,16 @@ const projects = [
     },
     logo: logoFlossSchedule,
   },
+  // {
+  //   name: 'Two-Minute Motivation',
+  //   date: '',
+  //   description: '',
+  //   link: {
+  //     href: 'https://github.com/rgpass/two-minute-motivation-mobile',
+  //     label: 'github.com',
+  //   },
+  //   logo: logoFlossSchedule,
+  // },
 ]
 
 function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -74,11 +87,11 @@ export default function Projects() {
             <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
               <Card.Link href={project.link.href}>{project.name}</Card.Link>
             </h2>
-            {/* {project.date && (
+            {project.date && (
               <time className="text-sm text-zinc-400 dark:text-zinc-500">
                 {formatMonth(project.date)}
               </time>
-            )} */}
+            )}
             <Card.Description>{project.description}</Card.Description>
             <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
               <LinkIcon className="h-6 w-6 flex-none" />
