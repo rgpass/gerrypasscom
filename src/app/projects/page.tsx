@@ -125,7 +125,7 @@ export default function Projects() {
               <Card.Link href={project.link.href}>{project.name}</Card.Link>
             </h2>
             {project.date && (
-              <time className="text-sm text-zinc-400 dark:text-zinc-500">
+              <time className="z-10 text-sm text-zinc-400 dark:text-zinc-500">
                 {formatMonth(project.date)}
               </time>
             )}
