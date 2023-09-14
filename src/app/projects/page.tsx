@@ -7,6 +7,7 @@ import logoChakra from '@/images/logos/chakra.png'
 import logoPlz from '@/images/logos/plz.svg'
 import logoFlossSchedule from '@/images/logos/floss-schedule.svg'
 import { formatMonth } from '@/lib/formatDate'
+import logoTimer from '@/images/logos/timer.svg'
 
 const projects = [
   {
@@ -17,7 +18,7 @@ const projects = [
     logo: logoPlz,
   },
   {
-    name: 'Chakra UI unofficial UI kit for Figma',
+    name: 'Chakra UI unofficial UI kit',
     date: '2023-01',
     description: 'A Figma UI kit for Chakra UI using the newest Figma features',
     link: {
@@ -36,16 +37,18 @@ const projects = [
     },
     logo: logoFlossSchedule,
   },
-  // {
-  //   name: 'Two-Minute Motivation',
-  //   date: '',
-  //   description: '',
-  //   link: {
-  //     href: 'https://github.com/rgpass/two-minute-motivation-mobile',
-  //     label: 'github.com',
-  //   },
-  //   logo: logoFlossSchedule,
-  // },
+  {
+    name: 'Two-Minute Motivation',
+    date: '2018-06',
+    description:
+      'Web and React Native app to get motivation with an easy 2-minute task',
+    link: {
+      href: 'https://github.com/rgpass/two-minute-motivation',
+      label: 'github.com',
+    },
+    logo: logoTimer,
+  },
+  // Happs
 ]
 
 function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
