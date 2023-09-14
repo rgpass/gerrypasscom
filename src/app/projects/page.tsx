@@ -3,10 +3,10 @@ import Image from 'next/image'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
-import logoChakra from '@/images/logos/chakra.png'
-import logoFlossSchedule from '@/images/logos/floss-schedule.svg'
+import logoChakra from '@/images/logos/chakra.svg'
+import logoFlossSchedule from '@/images/logos/tooth.svg'
 import logoLocation from '@/images/logos/location.svg'
-import logoPlz from '@/images/logos/plz.svg'
+import logoPray from '@/images/logos/pray.svg'
 import logoSchool from '@/images/logos/school.svg'
 import logoSmile from '@/images/logos/smile.svg'
 import logoTimer from '@/images/logos/timer.svg'
@@ -18,7 +18,7 @@ const projects = [
     date: '2023-06',
     description: 'A CLI for converting natural language to shell commands',
     link: { href: 'https://github.com/rgpass/plz', label: 'github.com' },
-    logo: logoPlz,
+    logo: logoPray,
   },
   {
     name: 'Chakra UI unofficial UI kit',

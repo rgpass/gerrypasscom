@@ -10,7 +10,7 @@ export function formatDate(dateString: string) {
 export function formatMonth(dateString: string) {
   return new Date(`${dateString}T00:00:00Z`).toLocaleDateString('en-US', {
     month: 'short',
-    year: '2-digit',
+    year: 'numeric',
     timeZone: 'UTC',
   })
 }
