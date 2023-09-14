@@ -8,6 +8,7 @@ import logoFlossSchedule from '@/images/logos/floss-schedule.svg'
 import logoLocation from '@/images/logos/location.svg'
 import logoPlz from '@/images/logos/plz.svg'
 import logoSchool from '@/images/logos/school.svg'
+import logoSmile from '@/images/logos/smile.svg'
 import logoTimer from '@/images/logos/timer.svg'
 import { formatMonth } from '@/lib/formatDate'
 
@@ -71,17 +72,17 @@ const projects = [
     },
     logo: logoLocation,
   },
-  // {
-  //   name: 'Happs',
-  //   date: '2014-10',
-  //   description:
-  //     'My flagship app when starting web dev, a positive psychology app',
-  //   link: {
-  //     href: 'https://github.com/rgpass/happs',
-  //     label: 'github.com',
-  //   },
-  //   logo: logoTimer,
-  // },
+  {
+    name: 'Happs',
+    date: '2014-10',
+    description:
+      'My flagship app when starting web dev, a positive psychology app',
+    link: {
+      href: 'https://github.com/rgpass/happs',
+      label: 'github.com',
+    },
+    logo: logoSmile,
+  },
 ]
 
 function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
