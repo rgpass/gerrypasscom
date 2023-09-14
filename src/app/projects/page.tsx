@@ -4,10 +4,12 @@ import Image from 'next/image'
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import logoChakra from '@/images/logos/chakra.png'
-import logoPlz from '@/images/logos/plz.svg'
 import logoFlossSchedule from '@/images/logos/floss-schedule.svg'
-import { formatMonth } from '@/lib/formatDate'
+import logoLocation from '@/images/logos/location.svg'
+import logoPlz from '@/images/logos/plz.svg'
+import logoSchool from '@/images/logos/school.svg'
 import logoTimer from '@/images/logos/timer.svg'
+import { formatMonth } from '@/lib/formatDate'
 
 const projects = [
   {
@@ -48,27 +50,27 @@ const projects = [
     },
     logo: logoTimer,
   },
-  // {
-  //   name: 'Instructor Assistant',
-  //   date: '2017-04',
-  //   description:
-  //     'A web app for checking student understanding and asking questions',
-  //   link: {
-  //     href: 'https://github.com/rgpass/instructor-assistant',
-  //     label: 'github.com',
-  //   },
-  //   logo: logoTimer,
-  // },
-  // {
-  //   name: 'Middle of Us',
-  //   date: '2015-08',
-  //   description: 'A web app for finding a meeting place between two locations',
-  //   link: {
-  //     href: 'https://github.com/rgpass/middleofus',
-  //     label: 'github.com',
-  //   },
-  //   logo: logoTimer,
-  // },
+  {
+    name: 'Instructor Assistant',
+    date: '2017-04',
+    description:
+      'A web app for checking student understanding and asking questions',
+    link: {
+      href: 'https://github.com/rgpass/instructor-assistant',
+      label: 'github.com',
+    },
+    logo: logoSchool,
+  },
+  {
+    name: 'MiddleOf.Us',
+    date: '2015-08',
+    description: 'A web app for finding a meeting place between two locations',
+    link: {
+      href: 'https://github.com/rgpass/middleofus',
+      label: 'github.com',
+    },
+    logo: logoLocation,
+  },
   // {
   //   name: 'Happs',
   //   date: '2014-10',
