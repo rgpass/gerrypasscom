@@ -52,6 +52,7 @@ code.language-text {
   word-break: break-word;
 }
 
-p > code {
+p > code,
+li > code {
   line-height: 1.5rem;
 }

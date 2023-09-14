@@ -1,0 +1,62 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+
+export const article = {
+  author: 'Gerry Pass',
+  date: '2023-09-14',
+  title:
+    'aider - Top Tier AI Coding Assistant and Best AI Pair Programming Tool',
+  description:
+    "paul-gauthier's aider is one of the best AI coding assistants, up there with GitHub Copilot. However, for AI pair programming, it's the best.",
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+## GitHub Copilot Value and Shortcomings
+
+Not really a hot take: in 2023, if you aren't using [GitHub's Copilot](https://github.com/features/copilot), you're a dinosaur. It's the best AI coding assistant out there and it's cheap. Given a cost of $100 per year, a very conservative estimate of a senior dev's fully-loaded hourly rate of $100, and [GitHub's estimated 2x productivity](https://github.blog/2022-09-07-research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/#finding-2-but-speed-is-important-too), it pays for itself in two hours. It's a no-brainer.
+
+But one downside of Copilot is that its context often feels _very_ limited. It has [the context of your open tabs](https://github.blog/2023-05-17-how-github-copilot-is-getting-better-at-understanding-your-code/#how-github-copilot-understands-your-code), but that doesn't help when you're working on a new feature or a new project. Or if you don't know what files are relevant. Or if you have [ADHD and aggressively close your tabs to minimize distraction](https://link.springer.com/chapter/10.1007/978-3-031-35017-7_9) to stay in flow. Or if the project is massive and the change requires modifications to a large number of files.
+
+Copilot is often a great tool when you're working on repetitive tasks or you know exactly what to do. But for large tasks, its benefit starts to drop off.
+
+## aider FTW
+
+While Copilot is perfectly integrated into your editor (assuming you use VS Code lol), [aider](https://github.com/paul-gauthier/aider) is a CLI. Which is kind of nice given that you can just run it in VS Code's Terminal. This way you can effectively have both Copilot and aider running at the same time and they don't get in each other's way.
+
+aider does a couple of things that make it stand out:
+
+- It [builds a map of the entire repo](https://aider.chat/docs/ctags.html) using [Universal Ctags](https://github.com/universal-ctags/ctags)
+- You manually add files to the context, saving you money on your OpenAI API bill
+- If you don't manually add files (or if you miss 1+), aider will use the map to find relevant files and ask you to add them to the context
+- You talk to it using natural language, which feels smoother than typing a comment and waiting for Copilot to respond
+- When you prompt it with something, it will show you the `diff` and commit it (which can be undone easily via `/undo`)
+- If you run the tests via `/run npm run test` and you get a failure, you can add that to the context and it will try to fix it automatically
+
+The only two downsides I've seen thus far are:
+
+1. Sometimes you want to make a small change and the _displayed_ `diff` will be the whole file. So you have to sit there and wait. But this can be overcome through understanding that I can easily make the change myself
+2. The pricing can get high. Playing around with it for a couple of hours, I was at ~$3. If what you (and/or your company) cares about is output, then this is a non-issue. But if you're paid by the hour, then you'll have to sell it to your boss. I think it's worth it, but I'm not your boss
+
+## What about Cody?
+
+[Sourcegraph's Cody](https://docs.sourcegraph.com/cody/overview) is a top contender in this space. It's probably better for _very_ large apps since [it uses embeddings](https://docs.sourcegraph.com/cody/faq#embeddings) to understand your code, so it doesn't need to send the entire map for each prompt.
+
+The downside is that it isn't as effective. It's surprising given that the embeddings should find the top most relevant files, but it uses [Anthropic's Claude API](https://docs.sourcegraph.com/cody/faq#what-third-party-cloud-services-does-cody-depend-on-today), which isn't quite as effective as GPT-4 (yet?).
+
+The other downside is that it goes through Sourcegraph's servers, meaning privacy concerns and [rate limiting](https://about.sourcegraph.com/cody/pricing). The Enterprise tier allows for a "Bring-your-own Key for Anthropic and OpenAI" but this is standard for aider.
+
+## Try Them Yourself
+
+Both aider and Cody can be experimented with for cheap (aider) or free (Cody). A simple task is to clone [a JavaScript-based Snake game](https://github.com/patorjk/JavaScript-Snake) and add a feature. A couple of example feature ideas:
+
+- Add ability to press `p` to pause the game
+- Add random fruit value and change the color of the fruit based on the value
+- Change the head of the snake to have an arrow pointing in the direction of the snake's movement
+
+I'm sure you can come up with more. But the point is to try it out and see how it feels, especially on repos that you've never seen before. I think you'll be surprised at how much you can get done with these tools.
