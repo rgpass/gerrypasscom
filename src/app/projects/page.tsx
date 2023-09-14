@@ -41,14 +41,45 @@ const projects = [
     name: 'Two-Minute Motivation',
     date: '2018-06',
     description:
-      'Web and React Native app to get motivation with an easy 2-minute task',
+      'Web and React Native app to get motivation with a 2-minute task',
     link: {
       href: 'https://github.com/rgpass/two-minute-motivation',
       label: 'github.com',
     },
     logo: logoTimer,
   },
-  // Happs
+  // {
+  //   name: 'Instructor Assistant',
+  //   date: '2017-04',
+  //   description:
+  //     'A web app for checking student understanding and asking questions',
+  //   link: {
+  //     href: 'https://github.com/rgpass/instructor-assistant',
+  //     label: 'github.com',
+  //   },
+  //   logo: logoTimer,
+  // },
+  // {
+  //   name: 'Middle of Us',
+  //   date: '2015-08',
+  //   description: 'A web app for finding a meeting place between two locations',
+  //   link: {
+  //     href: 'https://github.com/rgpass/middleofus',
+  //     label: 'github.com',
+  //   },
+  //   logo: logoTimer,
+  // },
+  // {
+  //   name: 'Happs',
+  //   date: '2014-10',
+  //   description:
+  //     'My flagship app when starting web dev, a positive psychology app',
+  //   link: {
+  //     href: 'https://github.com/rgpass/happs',
+  //     label: 'github.com',
+  //   },
+  //   logo: logoTimer,
+  // },
 ]
 
 function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
