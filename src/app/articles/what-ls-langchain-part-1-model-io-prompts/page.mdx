@@ -1,0 +1,288 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+
+export const article = {
+  author: 'Gerry Pass',
+  date: '2023-09-21',
+  title: 'What is LangChain - Part 1: Model I/O, Prompts',
+  description:
+    'Part 1 covers how LangChain makes working with templates and prompts easy',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+[LangChain](https://js.langchain.com/docs/get_started/introduction) is "a framework for developing applications powered by language models." It's very useful for developing applications that consume LLM's. The most basic thing it does is make working with models and prompts easy. Under [the Model I/O module](https://js.langchain.com/docs/modules/model_io/), there are three parts:
+
+1. Prompts: Templatize, dynamically select, and manage model inputs
+2. Language models: Make calls to language models through common interfaces
+3. Output parsers: Extract information from model outputs
+
+This article summarizes the first part, prompts.
+
+## Prompt Templates
+
+### Basic Templates
+
+Think of LangChain's `PromptTemplate` as a more useful version of [lodash's template function](https://lodash.com/docs/4.17.15#template). It allows you to create templates that can be dynamically filled in with data. Here's a basic example.
+
+```ts
+import { PromptTemplate } from 'langchain/prompts'
+
+async function run() {
+  const template = 'Tell me a {adjective} story.'
+
+  // `fromTemplate` will infer the `inputVariables`
+  const promptFromTemplate = PromptTemplate.fromTemplate(template)
+
+  // Constructor used to explicitly state the `inputVariables`
+  const promptViaConstructor = new PromptTemplate({
+    inputVariables: ['adjective'],
+    template,
+  })
+
+  const formattedFromTemplate = await promptFromTemplate.format({
+    adjective: 'funny',
+  })
+  const formattedViaConstructor = await promptViaConstructor.format({
+    adjective: 'serious',
+  })
+
+  console.log(formattedFromTemplate) // Tell me a funny story.
+  console.log(formattedViaConstructor) // Tell me a serious story.
+}
+
+run()
+```
+
+### Chat Prompts
+
+But when using models fine-tuned for chat, they will often have a different API, particularly related to the `role` of who sent the message. The standard is to have a `system` which is the instructions a dev would set for how the model should respond, a `human` (or `user`) which is the message the user sent, and an `ai` (or `assistant`) which is the response the model generated. OpenAI uses `system`, `user`, and `assistant`, but LangChain uses the generic terms so that switching between models/services is easier.
+
+```ts
+import { ChatPromptTemplate } from 'langchain/prompts'
+
+interface InputVariables {
+  task: string
+  text: string
+}
+
+async function run() {
+  const systemTemplate =
+    'You are a helpful assistant who {task} an input string.'
+  const firstHumanTemplate = 'hello'
+  const aiTemplate = 'olleh'
+  const humanTemplate = '{text}'
+
+  const chatPrompt = ChatPromptTemplate.fromMessages<InputVariables>([
+    ['system', systemTemplate],
+    ['human', firstHumanTemplate],
+    ['ai', aiTemplate],
+    ['human', humanTemplate],
+  ])
+
+  const formattedChatPrompt = await chatPrompt.formatMessages({
+    task: 'reverses',
+    text: 'world',
+  })
+
+  console.log(formattedChatPrompt[0].content) // You are a helpful assistant who reverses an input string.
+}
+
+run()
+```
+
+### Partial Templates
+
+In some cases, you'll get some, but not all, of the values needed to generate a prompt. Then, later on you'll get the last set of values. Without LangChain, you would have to handle all the scoping to keeping those values accessible, but LangChain makes this easy. It also makes it easy to call functions to get values, such as the current date.
+
+```ts
+import { PromptTemplate } from 'langchain/prompts'
+
+function getCurrentDate() {
+  return new Date().toLocaleDateString()
+}
+
+async function run() {
+  const template =
+    'I initially knew {topic1}, but as of {date}, I know {topic2}, as well.'
+
+  const prompt = new PromptTemplate({
+    template,
+    inputVariables: ['date', 'topic1', 'topic2'],
+  })
+
+  const partial = await prompt.partial({
+    date: getCurrentDate,
+    topic1: 'TypeScript',
+  })
+
+  const formatted = await partial.format({ topic2: 'LangChain prompts' })
+
+  console.log(formatted) // I initially knew TypeScript, but as of 9/21/2023, I know LangChain prompts, as well.
+}
+
+run()
+```
+
+### Composition
+
+Most advanced prompts have multiple sections that all need to be brought in together. LangChain allows you to consume 1+ `PromptTemplate`'s into a single `PromptTemplate`.
+
+```ts
+import { PipelinePromptTemplate, PromptTemplate } from 'langchain/prompts'
+
+async function run() {
+  const fullTemplate = `{intro}
+
+  {example}
+
+  {actual}`
+  const fullPrompt = PromptTemplate.fromTemplate(fullTemplate)
+
+  const introTemplate = `You are impersonating {who}`
+  const exampleTemplate = `Here's an example Q&A:
+    Q: {exampleQuestion}
+    A: {exampleAnswer}
+  `
+  const actualTemplate = `Here's the next Q&A:
+    Q: {actualQuestion}
+    A:
+  `
+
+  const introPrompt = PromptTemplate.fromTemplate(introTemplate)
+  const examplePrompt = PromptTemplate.fromTemplate(exampleTemplate)
+  const actualPrompt = PromptTemplate.fromTemplate(actualTemplate)
+
+  const composedPrompt = new PipelinePromptTemplate({
+    pipelinePrompts: [
+      { name: 'intro', prompt: introPrompt },
+      { name: 'example', prompt: examplePrompt },
+      { name: 'actual', prompt: actualPrompt },
+    ],
+    finalPrompt: fullPrompt,
+  })
+
+  const finalPrompt = await composedPrompt.format({
+    who: 'Micky Mouse',
+    exampleQuestion: 'Where is your favorite place?',
+    exampleAnswer: "Oh boy! It's Disneyland.",
+    actualQuestion: 'What is your favorite food?',
+  })
+
+  console.log(finalPrompt)
+
+  /*
+    You are impersonating Micky Mouse
+
+    Here's an example Q&A:
+      Q: Where is your favorite place?
+      A: Oh boy! It's Disneyland.
+
+
+    Here's the next Q&A:
+      Q: What is your favorite food?
+      A:
+  */
+}
+
+run()
+```
+
+## Example Selectors
+
+In the snippet above, we only have one example -- "Where is your favorite place?" But we often want to have multiple examples. The downside is that each example takes up precious context space. So we either want to filter down the examples by max length, similarity, or some programmatic way.
+
+### Max Length
+
+```ts
+import {
+  FewShotPromptTemplate,
+  LengthBasedExampleSelector,
+  PromptTemplate,
+} from 'langchain/prompts'
+
+async function run() {
+  const examplePrompt = new PromptTemplate({
+    inputVariables: ['letter', 'fruit'],
+    template: '{letter} is for {fruit}',
+  })
+
+  const examples = [
+    { letter: 'A', fruit: 'Apple' },
+    { letter: 'B', fruit: 'Banana' },
+    { letter: 'C', fruit: 'Cherry' },
+    { letter: 'D', fruit: 'Durian' },
+    { letter: 'E', fruit: 'Elderberry' },
+    { letter: 'F', fruit: 'Fig' },
+    { letter: 'G', fruit: 'Grape' },
+    { letter: 'H', fruit: 'Honeydew' },
+  ]
+
+  const selectorOptions = { examplePrompt, maxLength: 25 }
+
+  const exampleSelector = await LengthBasedExampleSelector.fromExamples(
+    examples,
+    selectorOptions,
+  )
+
+  const dynamicPrompt = new FewShotPromptTemplate({
+    exampleSelector,
+    examplePrompt,
+    prefix: 'Give a fruit for the input letter',
+    suffix: '{letter} is for',
+    inputVariables: ['letter'],
+  })
+
+  const formattedShort = await dynamicPrompt.format({ letter: 'O' })
+  console.log(formattedShort)
+
+  /*
+    Give a fruit for the input letter
+
+    A is for Apple
+
+    B is for Banana
+
+    C is for Cherry
+
+    D is for Durian
+
+    E is for Elderberry
+
+    F is for Fig
+
+    O is for
+  */
+
+  const formattedLong = await dynamicPrompt.format({
+    letter: "It's difficult to pick just one letter, but I'd go with S",
+  })
+  console.log(formattedLong)
+  /*
+    Give a fruit for the input letter
+
+    A is for Apple
+
+    B is for Banana
+
+    C is for Cherry
+
+    It's difficult to pick just one letter, but I'd go with S is for
+  */
+}
+
+run()
+```
+
+### Similarity and Programmatic
+
+[Similarity](https://js.langchain.com/docs/modules/model_io/prompts/example_selectors/similarity) requires using [embeddings](https://platform.openai.com/docs/guides/embeddings/embeddings), which is a lot more complicated than string composition. And programmatic selection (aka [prompt selectors](https://js.langchain.com/docs/modules/model_io/prompts/prompt_selectors/)) is mainly useful for when you want to switch models, which is also more complicated than string composition and requires more knowledge of LangChain, so we won't cover them here.
+
+## Final Notes
+
+If you followed along with LangChain's documentation, you'll see that I broke out the strings into their variables. This will make it much easier to read and communicate about, particularly the clear separation of `*Template` from `*Prompt`. I would recommend doing the same in your own code and in your own meetings, since it can be confusing to talk about "prompts" when you really mean "templates" or vice versa.
