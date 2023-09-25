@@ -1,0 +1,196 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+
+export const article = {
+  author: 'Gerry Pass',
+  date: '2023-09-25',
+  title: 'What is LangChain - Part 2: Model I/O, Language models',
+  description:
+    'Part 2 covers how LangChain makes working with models and switching between them easy',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+[LangChain](https://js.langchain.com/docs/get_started/introduction) is "a framework for developing applications powered by language models." It's very useful for developing applications that consume LLM's. The most basic thing it does is make working with models and prompts easy. Under [the Model I/O module](https://js.langchain.com/docs/modules/model_io/), there are three parts:
+
+1. Prompts: Templatize, dynamically select, and manage model inputs
+2. Language models: Make calls to language models through common interfaces
+3. Output parsers: Extract information from model outputs
+
+This article summarizes the second part, language models. For the first part, prompts, see [Part 1](https://www.gerrypass.com/articles/what-ls-langchain-part-1-model-io-prompts).
+
+## LLMs vs Chat Models
+
+Before we dive into making calls to the language models, we have to cover the basic difference between a LLM and a Chat Model.
+
+**LLM**'s are the basic language models. You give them a prompt and they return a completion. One message in, one message out.
+
+**Chat Model**'s are LLM's that are fine-tuned to be conversational. You give them the whole chat history. Multiple messages in, one message out.
+
+Another thing to consider that there are instruct-tuned models, but they take the form of either a completion or a chat. If you're not sure what that means, ignore it for now.
+
+## LLMs
+
+Let's cover LLM's since they are simpler and Chat Models really just build on top of them.
+
+### `call`
+
+Pretty self explanatory. It just returns a completion.
+
+```ts
+import { OpenAI } from 'langchain/llms/openai'
+
+const openAIApiKey = process.env.OPENAI_API_KEY
+
+const llm = new OpenAI({
+  openAIApiKey,
+})
+
+async function run() {
+  const res = await llm.call('Tell me a joke')
+
+  console.log(res)
+
+  /*
+    Q: What do you call a bear with no teeth?
+    A: A gummy bear!
+  */
+}
+
+run()
+```
+
+### `generate`
+
+Allows for batching and gives more data back.
+
+```ts
+import { OpenAI } from 'langchain/llms/openai'
+
+const openAIApiKey = process.env.OPENAI_API_KEY
+
+const llm = new OpenAI({
+  openAIApiKey,
+})
+
+async function run() {
+  const llmResult = await llm.generate([
+    'How much wood would a woodchuck chuck if a woodchuck could chuck wood?',
+    'What is the meaning of life?',
+  ])
+
+  const { generations } = llmResult
+
+  console.log(generations[0])
+
+  /*
+    [
+      {
+        text: "\n\nA woodchuck would chuck as much wood as it could if it could chuck wood.",
+        generationInfo: { finishReason: "stop", logprobs: null }
+      }
+    ]
+  */
+
+  console.log(generations[1])
+
+  /*
+    [
+      {
+        text: "\n\nThe meaning of life is different for everyone, as it is an individual journey. However, many people strive for happiness, connection, and purpose in life.",
+        generationInfo: { finishReason: "stop", logprobs: null }
+      }
+    ]
+  */
+}
+
+run()
+```
+
+And here it is with the majority of its useful configuration options:
+
+```ts
+import { OpenAI } from 'langchain/llms/openai'
+
+const llm = new OpenAI({
+  cache: true, // Cache the results of the API calls, defaults to in-memory cache
+  maxTokens: -1, // -1 is a special value that means "use the max for that model" -- but you can overwrite
+  modelName: 'text-davinci-002',
+  openAIApiKey: process.env.OPENAI_API_KEY,
+  verbose: true, // Adds lots of logging on the API call
+})
+
+async function run() {
+  // With `verbose: true`, this outputs a lot of logged info
+  const llmResult1 = await llm.generate(['What is the meaning of life?'])
+
+  const gen1 = llmResult1.generations[0]
+
+  console.log(gen1[0].text) // The meaning of life is a question that has been asked by people throughout history. There is no one correct answer to this question.
+
+  // Calling again to check if the cache works
+  const llmResult2 = await llm.generate(['What is the meaning of life?'])
+
+  console.log(llmResult2.generations[0][0].text) // The meaning of life is a question that has been asked by people throughout history. There is no one correct answer to this question.
+}
+
+run()
+```
+
+### Events
+
+There are a few events that are worth listening to, particularly if you're streaming the results.
+
+- `handleLLMStart`
+- `handleLLMNewToken` (only available when `streaming: true`)
+- `handleLLMEnd`
+- `handleLLMError`
+
+They're pretty self explanatory and covered well in the docs.
+
+### Other Methods
+
+Here are a few other things you can do, but they're not as useful so I didn't cover them:
+
+- **Cancel requests.** This is useful if the request is taking too long or the content seems way off
+- **Deal with rate limiting and add retries.** Some services have lower rate limits, but they're often more reliable, so your YMMV with these
+- **Add a timeout.** This is useful because sometimes even OpenAI's API will hang
+
+## Chat Models
+
+The main services for Chat Models are OpenAI's GPT-4 and Anthropic's Claude. The API for these is almost exactly the same as LLM's, but instead of one message in, it's multiple. And each message has a source, such as Human, AI, and/or System.
+
+```ts
+import { ChatOpenAI } from 'langchain/chat_models/openai'
+import { HumanMessage, SystemMessage } from 'langchain/schema'
+
+const chat = new ChatOpenAI({
+  openAIApiKey: process.env.OPENAI_API_KEY,
+  modelName: 'gpt-4',
+})
+
+async function run() {
+  const response = await chat.call([
+    new SystemMessage(
+      'You are a helpful assistant that translates English to French.',
+    ),
+    new HumanMessage('Translate: I love programming.'),
+  ])
+
+  // `response` is an instance of `AIMessage`
+  console.log(response.content) // J'aime la programmation.
+}
+
+run()
+```
+
+One thing to note is that Chat Models benefit **much** more from LangChain's Prompts. Read [Part 1](https://www.gerrypass.com/articles/what-ls-langchain-part-1-model-io-prompts) for more on that.
+
+## Final Notes
+
+Given the power of GPT-4, knowing how to interact with it using LangChain is a foundational skill. Most AI services that seem like "a thin wrapper over ChatGPT" are using just this, but with a lot more effort put into the prompts.
