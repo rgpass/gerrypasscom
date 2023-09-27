@@ -1,0 +1,222 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+
+export const article = {
+  author: 'Gerry Pass',
+  date: '2023-09-26',
+  title: 'What is LangChain - Part 3: Model I/O, Output parsers',
+  description:
+    'Part 3 covers how LangChain enables parsing responses into data types.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+[LangChain](https://js.langchain.com/docs/get_started/introduction) is "a framework for developing applications powered by language models." It's very useful for developing applications that consume LLM's. The most basic thing it does is make working with models and prompts easy. Under [the Model I/O module](https://js.langchain.com/docs/modules/model_io/), there are three parts:
+
+1. Prompts: Templatize, dynamically select, and manage model inputs
+2. Language models: Make calls to language models through common interfaces
+3. Output parsers: Extract information from model outputs
+
+This article summarizes the second part, language models. For the earlier parts, see [Part 1](https://www.gerrypass.com/articles/what-ls-langchain-part-1-model-io-prompts) and [Part 2](https://www.gerrypass.com/articles/what-is-langchain-part-02-model-io-language-models).
+
+## Overview
+
+When dealing with LLM's, you are in the world of strings. You create a string template, pass some data into it, to get a string back. You send that string to the model. It returns a, wait for it -- string. 🤯
+
+Sometimes this is what you want. Particularly if you see LLM's as merely a chatbot and/or text completion tool.
+
+But if you know that [(certain) LLM's are much smarter than simple chatbots](https://www.insider.com/chatgpt-passes-medical-exam-diagnoses-rare-condition-2023-4), you know that you can do a **lot** more with them. OpenAI knew this, so they rolled out [Functions](https://openai.com/blog/function-calling-and-other-api-updates).
+
+## Parsing Lists
+
+The simplest example is telling the LLM to generate a comma-separated list then parse the values out of the response string, ending up with the values in an array.
+
+```ts
+import { OpenAI } from 'langchain/llms/openai'
+import { PromptTemplate } from 'langchain/prompts'
+import { CommaSeparatedListOutputParser } from 'langchain/output_parsers'
+import { RunnableSequence } from 'langchain/schema/runnable'
+
+export const run = async () => {
+  // Creates a comma-separated list. See CustomListOutputParser if you want
+  // another separator.
+  const parser = new CommaSeparatedListOutputParser()
+
+  console.log(parser.getFormatInstructions()) // Your response should be a list of comma separated values, eg: `foo, bar, baz`
+
+  // Chains will be covered in more details a later article. For now, just see
+  // it as: prompt -> model -> parser. Or in other words, see it as just
+  // `llm.call` with a few extra options.
+  const chain = RunnableSequence.from([
+    PromptTemplate.fromTemplate('List five {subject}.\n{formatInstructions}'),
+    // Using temperature 0 to get (more) deterministic results.
+    new OpenAI({ temperature: 0, verbose: true }),
+    parser,
+  ])
+
+  // The prompt ends up being:
+  /*
+   Top software developer job titles.
+   Your response should be a list of comma separated values, eg: `foo, bar, baz`
+  */
+  const response = await chain.invoke({
+    subject: 'Top software developer job titles',
+    formatInstructions: parser.getFormatInstructions(),
+  })
+
+  console.log(response)
+  /*
+    [
+      'Software Engineer',
+      'Software Developer',
+      'Software Architect',
+      'Full Stack Developer',
+      'Front End Developer'
+    ]
+  */
+}
+
+run()
+```
+
+The only thing to note is that passing in `verbose: true` into the `OpenAI` constructor will not show the prompt, so even logging is fairly limited.
+
+## Parsing an Object
+
+Perhaps instead of a list of responses, you want a simple, single-level dictionary. Or for us JS devs, an object with some key-value pairs. In that case, a comma-separated list won't suffice.
+
+Luckily, we have `StructuredOutputParser.fromNamesAndDescriptions` to the rescue. The naming of this function through me off at first. A more appropriate name may have been `fromKeysAndDescriptions`. But I digress.
+
+````ts
+import { OpenAI } from 'langchain/llms/openai'
+import { PromptTemplate } from 'langchain/prompts'
+import { StructuredOutputParser } from 'langchain/output_parsers'
+import { RunnableSequence } from 'langchain/schema/runnable'
+
+async function run() {
+  const parser = StructuredOutputParser.fromNamesAndDescriptions({
+    answer: "answer to the user's question",
+    confidence: 'confidence in the answer, should be a number between 0 and 1',
+    source: "source used to answer the user's question, should be a website.",
+  })
+
+  console.log(parser.getFormatInstructions())
+
+  /*
+    You must format your output as a JSON value that adheres to a given "JSON Schema" instance.
+
+    "JSON Schema" is a declarative language that allows you to annotate and validate JSON documents.
+
+    For example, the example "JSON Schema" instance {{"properties": {{"foo": {{"description": "a list of test words", "type": "array", "items": {{"type": "string"}}}}}}, "required": ["foo"]}}}}
+    would match an object with one required property, "foo". The "type" property specifies "foo" must be an "array", and the "description" property semantically describes it as "a list of test words". The items within "foo" must be strings.
+    Thus, the object {{"foo": ["bar", "baz"]}} is a well-formatted instance of this example "JSON Schema". The object {{"properties": {{"foo": ["bar", "baz"]}}}} is not well-formatted.
+
+    Your output will be parsed and type-checked according to the provided schema instance, so make sure all fields in your output match the schema exactly and there are no trailing commas!
+
+    Here is the JSON Schema instance your output must adhere to. Include the enclosing markdown codeblock:
+    ```json
+    {"type":"object","properties":{"answer":{"type":"string","description":"answer to the user's question"},"confidence":{"type":"string","description":"confidence in the answer, should be a number between 0 and 1"},"source":{"type":"string","description":"source used to answer the user's question, should be a website."}},"required":["answer","confidence","source"],"additionalProperties":false,"$schema":"http://json-schema.org/draft-07/schema#"}
+    ```
+  */
+
+  const chain = RunnableSequence.from([
+    PromptTemplate.fromTemplate(
+      "Answer the users' question as best as possible.\n{format_instructions}\n{question}",
+    ),
+    new OpenAI({ temperature: 0 }),
+    parser,
+  ])
+
+  const response = await chain.invoke({
+    question: 'What year will the singularity happen?',
+    format_instructions: parser.getFormatInstructions(),
+  })
+
+  console.log(response)
+  /*
+    {
+      answer: 'The exact year of the singularity is unknown, as it is a highly debated topic.',
+      confidence: '0.8',
+      source: 'https://www.singularityweblog.com/what-is-the-singularity/'
+    }
+  */
+}
+
+run()
+````
+
+For most apps, this will be the most commonly used parser. It's a good balance of flexibility and ease of use.
+
+## Parsing a Complex Object
+
+For the more complex requests, you can use `StructuredOutputParser.fromZodSchema`, which leverages [`zod`](https://zod.dev/).
+
+````ts
+import { z } from 'zod'
+import { OpenAI } from 'langchain/llms/openai'
+import { PromptTemplate } from 'langchain/prompts'
+import { StructuredOutputParser } from 'langchain/output_parsers'
+import { RunnableSequence } from 'langchain/schema/runnable'
+
+async function run() {
+  // The diff from above is changing `source` to `sources`
+  const parser = StructuredOutputParser.fromZodSchema(
+    z.object({
+      answer: z.string().describe("answer to the user's question"),
+      confidence: z
+        .string()
+        .describe(
+          'confidence in the answer, should be a number between 0 and 1',
+        ),
+      sources: z
+        .array(z.string())
+        .describe(
+          "sources used to answer the user's question, should be websites.",
+        ),
+    }),
+  )
+
+  console.log(parser.getFormatInstructions())
+
+  /*
+    ... same as previous example until the last couple of lines ...
+
+    ```json
+    {"type":"object","properties":{"answer":{"type":"string","description":"answer to the user's question"},"confidence":{"type":"string","description":"confidence in the answer, should be a number between 0 and 1"},"sources":{"type":"array","items":{"type":"string"},"description":"sources used to answer the user's question, should be websites."}},"required":["answer","confidence","sources"],"additionalProperties":false,"$schema":"http://json-schema.org/draft-07/schema#"}
+    ```
+  */
+
+  const chain = RunnableSequence.from([
+    PromptTemplate.fromTemplate(
+      "Answer the users' question as best as possible.\n{format_instructions}\n{question}",
+    ),
+    new OpenAI({ temperature: 0 }),
+    parser,
+  ])
+
+  const response = await chain.invoke({
+    question: 'What year will the singularity happen?',
+    format_instructions: parser.getFormatInstructions(),
+  })
+
+  console.log(response)
+  /*
+    {
+      answer: 'The exact year of the singularity is unknown, but it is estimated to occur sometime in the 21st century.',
+      confidence: '0.8',
+      sources: [ 'https://en.wikipedia.org/wiki/Technological_singularity' ]
+    }
+  */
+}
+
+run()
+````
+
+## Final Notes
+
+The parsers make it **much** easier to get the values you want from the output out of the string and put into the desired data types. The downside is that the logging seems to be suppressed when using the Chain. But given the value of the parsers, I doubt many apps will forego using them.
