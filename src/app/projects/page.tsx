@@ -6,6 +6,7 @@ import { SimpleLayout } from '@/components/SimpleLayout'
 import logoChakra from '@/images/logos/chakra.svg'
 import logoFlossSchedule from '@/images/logos/tooth.svg'
 import logoLocation from '@/images/logos/location.svg'
+import logoLlmTestingLib from '@/images/logos/llm-testing-lib.svg'
 import logoPray from '@/images/logos/pray.svg'
 import logoSchool from '@/images/logos/school.svg'
 import logoSmile from '@/images/logos/smile.svg'
@@ -13,6 +14,17 @@ import logoTimer from '@/images/logos/timer.svg'
 import { formatMonth } from '@/lib/formatDate'
 
 const projects = [
+  {
+    name: 'LLM Testing Lib',
+    date: '2023-10',
+    description:
+      'Test the accuracy of your LLM prompts easily, quickly, and cheaply',
+    link: {
+      href: 'https://github.com/rgpass/llm-testing-lib',
+      label: 'github.com',
+    },
+    logo: logoLlmTestingLib,
+  },
   {
     name: 'plz',
     date: '2023-06',
