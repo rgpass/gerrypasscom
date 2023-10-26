@@ -1,0 +1,43 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+
+export const article = {
+  author: 'Gerry Pass',
+  date: '2023-10-26',
+  title: "I Spent $2 on gpt-pilot So You Don't Have To",
+  description:
+    'gpt-pilot, like so many other AI code generation tools, starts off strong but fails soon after.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+Last month, I wrote [a review about code generation tools](https://www.gerrypass.com/articles/aider-top-tier-ai-coding-assistant-and-best-ai-pair-programming-tool), with two standouts being [GitHub's Copilot](https://github.com/features/copilot) and [aider](https://github.com/paul-gauthier/aider).
+
+This month, I decided to try out [gpt-pilot](https://github.com/Pythagora-io/gpt-pilot) and see if it would live up to the hype. tl;dr It didn't.
+
+## AI Is Not There... Yet
+
+So many of these tools, such as AutoGPT, MetaGPT, GPT Engineer, etc. are really missing something obvious when it comes to code generation: they don't understand that AI is not there... yet.
+
+If you are an expert in a subject, you will find out quickly that AI is wrong. It may not be completely wrong, but usually it's a _maximum_ of 95% right. And that's being generous and assuming expert-level prompt engineering. These code gen tools are no different. They all seem really cool at first, get a ton of GitHub stars, but then no one is iterating past that.
+
+The main way to fix this is to have a human-in-the-loop. This is a fancy way of saying that you have a human that is guiding the AI. It should _always_ assume that it's wrong unless the human says otherwise. It needs opt-in automation, not opt-out (or no option at all).
+
+If there's one 80/20 improvement that all of these projects could do, it would be adding a human-in-the-loop. Make me press Enter a bunch of times, I don't mind. But don't assume that AI is good enough to do it on its own.
+
+## Need Context for the Codebase
+
+gpt-pilot does the first steps of the development process pretty well. It asks for a summary of the project, it generates a suggested list of tools (that it calls its architecture), and it generates user stories. After that, though, it is missing all the context related to the code.
+
+aider sends up the relevant files, plus a summary of all the functions (via Universal Ctags). Copilot uses the opened files. gpt-pilot only uses what is returned by running things like `cat package.json`. Given the (very) verbose responses from gpt-pilot, I'm curious if the reason it falls on its face is that it runs out of context, or if it just doesn't have it at all.
+
+## Conclusion
+
+In general, almost every tool in this space is really good when going from 0 to 1 for a small app, such as recreating Snake or creating a web app for a chatroom. However, they all start to struggle after that. If there were two different phases (and probably two different tools), such as one for planning and one for coding, that would be a huge win. That combined with human-in-the-loop would be an even bigger win.
+
+I could see gpt-pilot helping on the planning side for now, but other tools are needed for the coding side.
