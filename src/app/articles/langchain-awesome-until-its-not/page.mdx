@@ -1,0 +1,56 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+
+export const article = {
+  author: 'Gerry Pass',
+  date: '2023-10-26',
+  title: "LangChain: Awesome Until It's Not",
+  description:
+    "LangChain is a great framework for working with LLM's, until you need to do something that it doesn't support.",
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+I was previously writing articles to cover, at a very high level, all the features of [LangChain](https://www.langchain.com/). That was until I started using it in a project that involved the next module I was going to write about: [Retrieval](https://js.langchain.com/docs/modules/data_connection/).
+
+# The Goal
+
+The project entailed a Retrieval-Augmented Generation (RAG) model. We would create vectors (aka embeddings) for several chunks of text based on our CEO's weekly emails and store them in a vector database (hosted by [Pinecone](https://www.pinecone.io/)). Then, we would use those vectors to find the most similar chunks of text to a given query. Finally, we would use those chunks of text to add more context to the prompt for GPT-4. This would enable GPT-4 to generate more relevant text.
+
+## The Problem
+
+The [Pinecone Integration](https://js.langchain.com/docs/modules/data_connection/vectorstores/integrations/pinecone) uses the [`Document`](https://js.langchain.com/docs/modules/data_connection/document_loaders/how_to/creating_documents) interface.
+
+```ts
+interface Document {
+  pageContent: string
+  metadata: Record<string, any>
+}
+```
+
+Which seems fine and _should_ allow us to add an `id` to `metadata`, so we can run the embedding process repeatedly, getting the same results. However, when integrating with Pinecone, if you add `id` to `metadata`, it gets placed into a property called `metadata`, _not_ the `id` property. So running it two times doubles the number of records in the vector database.
+
+As a workaround, I tried
+
+```ts
+const doc = new Document({ id, pageContent, metadata })
+```
+
+but this doesn't just throw a TypeScript error, it throws a runtime error. It's effectively a showstopper. I understand why LangChain makes it a runtime error, but I don't understand why they wouldn't have an optional property for `id`.
+
+## The Solution
+
+Drop LangChain for the Pinecone integration portion _only_. LangChain still helps out a lot with the rest of the project, particularly the `store.similaritySearch` function.
+
+On the preprocessing side, I did this by using LangChain and OpenAI to create the embeddings and the npm package `@pinecone-database/pinecone` to connect to Pinecone.
+
+On the querying side, I connect to Pinecone using `@pinecone-database/pinecone` and use LangChain's `PineconeStore.fromExistingIndex` to bring it into the LangChain framework. This allows for function calls like `similaritySearch`.
+
+## Conclusion
+
+Use LangChain until you run into problems. The productivity gains outweigh the pain of switching to something else for a small portion of your project.
