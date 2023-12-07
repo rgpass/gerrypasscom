@@ -1,0 +1,44 @@
+Q: What percentage front-end to back-end do you do?
+A: I do about 60% back-end and 40% front-end.
+
+Q: What programming languages are you proficient in?
+A: I have 9 years of experience with Ruby, 8 years of experience with JavaScript, 5 years of experience with TypeScript, and a little bit of experience with Ruby.
+
+Q: What frameworks are you proficient in?
+A: I have 9 years of experience with Ruby on Rails, 6 years of experience with React, a little bit of experience with NextJS, and a little bit of experience with React Native.
+
+Q: What databases are you proficient in?
+A: Most of my experience is with PostgreSQL and Redis.
+
+Q: How familiar are you with DevOps practices and deployment tools like Docker, Kubernetes, and AWS?
+A: I have used Docker and AWS, but I am not an expert.
+
+Q: What experience do you have with AWS?
+A: I have used several AWS services, including EC2, S3, RDS, OpsWorks, and CloudFront.
+
+Q: What do you want to learn more about in the future?
+A: I want to level up my DevOps skills, particularly around AWS, Docker, and Kubernetes. For languages, I want to learn Python and Elixir since they are the future of AI.
+
+Q: What approach do you use for testing?
+A: I apply outside-in testing, which means starting with integration tests and then moving to unit tests. This is promotes TDD from the start and ensures that the tests are covering the most important parts of the application.
+
+Q: How do you decide when to write a unit test vs an integration test?
+A: Testing is all about confidence. If I am confident that the code is working as expected, then I can ship a lot faster. So for me, e2e tests are important to have for the happy path. But given that they are slow, integration tests and unit tests cover the sad and angry paths. For integration vs unit tests, I typically let the TDD process guide me and go with my intuition.
+
+Q: What is your experience with CI/CD?
+A: I have implemented a few different pipelines from scratch, including CircleCI and GitHub Actions.
+
+Q: Tell me about the project you're most proud of.
+A: When I was at Get More Math, we had a LOT of technical debt, particularly around the back-end portion of the teacher application. Because of the team structure, any change required going through another team, which decreased dev velocity and increased bug count. So I proposed a plan to rewrite the back-end in Rails, applying TDD for all endpoints. This enabled us to move faster, reach 99% code coverage, and reduce the bug count to near zero. The part I'm most proud of is that I only wrote about 50% of the code. The rest was written by the mid and two junior developers on the team. I would essentially show them a pattern, implement it once, and then let them implement it for the rest of the endpoints. This was a huge win for the team and the company. It ended up with me receiving the "Tech Initiative of the Year" award from the CEO.
+
+Q: Tell me about the most challenging project you have worked on.
+A: When I was at Get More Math, we had a LOT of technical debt, particularly around the back-end portion of the teacher application. As a team, we proposed that we rewrite the back-end in Go, as all the buzz at the company was about performance. After a couple of months, we realized that Go was not the right choice and the performance concerns were really around the database. So we had to go back to management and I proposed that we rewrite the back-end in Rails. This was a hard sell, but I was able to do it by clearly outlining our mistakes and taking full, public ownership of them. We ended up making the switch and after the final meeting, the CEO called me and said how impressed he loved that I took ownership of the mistake and that no one had done that before.
+
+Q: Tell me about the most challenging bug you have fixed.
+A: At Get More Math, we had a bug teachers' screens would freeze on one page. The challenging part was that it was only a few teachers and only one of their classes. After being unable to replicate it locally, even with their data and similar hardware, we ended up jumping on several Zoom calls and diving into Chrome crash logs, which are unreadable to say the least. I proposed that we use LaunchDarkly to create several versions of this page, starting from simple HTML and adding features until we found the one that caused the crash. This ended up working and we were able to fix the bug.
+
+Q: What experience do you have with observability?
+A: I have used Sentry for error tracking and I have used Scout and AWS & Prometheus for performance monitoring. I've also used a couple other tools, but I can't remember their names.
+
+Q: What is your approach to refactoring? How do you know when to refactor?
+A: It's a bit subjective, but I often go with my intuition. Two more objective ways are using Code Climate which will tell you the complexity and the churn of a file, allowing you to prioritize properly. The other way is to always follow the mantra, "refactor so the change is easy, then make the change." If the current feature is easy to apply, then no refactoring is needed. But with a proper testing suite, it's easy to refactor and then make the change. This has the benefit of significantly reducing the payback time for refactoring.

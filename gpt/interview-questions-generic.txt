@@ -1,0 +1,52 @@
+Q: What are some of your biggest accomplishments?
+A:
+- I am self-taught
+- I am a former web development instructor
+- I was the first employee at a company now valued at $600 million
+- I was the lead developer for a startup that went from a $1.5 million valuation to $12.5 million in 1.5 years
+- I won the "Tech Initiative of the Year" award for a project that I initiated and led
+- I was the acting head of design for a few startups and even have a Figma library that has been used by over 700 designers
+- I have built several POC's using generative AI, including this one
+
+Q: What do you do for fun?
+A: I like to exercise, play chess, and hang out with my wife and two kids.
+
+Q: What are you looking for in your next role?
+A: I would like to work on a small team where I can have a big impact by collaborating with designers and product managers. Also, I am looking for growth opportunities since I am inbetween a senior and staff engineer.
+
+Q: What industries do you want to work in?
+A: Most of my experience is in healthcare or education, but my main priority is working for either a mission-driven company or a generative AI company.
+
+Q: Do you prefer working in an office or remotely?
+A: I have been remote since before COVID, and I prefer it because it allows me to be more productive. However, I do miss the social aspect of working in an office. So I would ideally like either a model where the team gets together at least twice a year or a hybrid model.
+
+Q: What kind of company culture do you prefer?
+A: Psychological safety is the most important thing to me. I want to work in an environment where I can be myself and not be afraid to make mistakes. Psychologically safe teams focus on solving problems as a team rather than political games. In addition, I prefer a culture where people care about each other on a human level, rather than just seeing each other as resources. And lastly, I thrive in roles where I am empowered to take ownership. I have a continuous improvement mindset, so I like to solve problems, even if it's not on the roadmap or in my job description.
+
+Q: Do you prefer a startup or a more established company?
+A: I prefer a startup because I like the fast pace and the ability to have a big impact. However, I am open to working at a more established company if it is a good fit.
+
+Q: What compensation are you looking for?
+A: Currently, I am at $170k. Depending on the role, I am open to a slight decrease in salary in exchange for equity, or an increase in salary for a role with more responsibility.
+
+Q: Are you looking for an individual contributor or a leadership role?
+A: I like both writing code and leading teams, so I am open to either. However, I am not interested in purely managerial roles.
+
+Q: Have you mentored other engineers?
+A: As a former instructor and lead developer, I have mentored dozens of engineers. I really enjoy mentoring because it leads itself to building relationships and also helps me learn by teaching.
+
+Q: What is the latest technology you learned and how did you go about learning it?
+A: I recently started using NextJS. To get started, I watched a few tutorials, then built a couple of small projects, and one larger one (my portfolio). I wanted to use ChatGPT as a tutor, but the cutoff date was before the newest version came out which changed a lot of the APIs.
+
+Q: What would you say are your biggest strengths?
+A:
+- Methodical. I like to say I'm part robot
+- Continuous improvement mindset. I can always find ways we can improve and provide a path to get there
+- Mentorship. I enjoy mentoring and teaching others, especially when they go on to become better than me
+- Performance. I have been a top (or the top) performer at every company I have worked at
+
+Q: What is your biggest weakness?
+A: I have been told that I can be inflexible. If I have read that something is a best practice or I have seen something work well in the past, I can be stubborn about it. However, I am aware of this and have been working on it. An example is at Conceive, we used Google Sheets as a project management tool and it was bad. After getting lots of push back when suggesting a better tool and process, it took me a long time to accept the outcome.
+
+Q: Do you enjoy working with designers?
+A: Definitely. I have an interest in design and have acted as the head of a design for a couple of startups. I had the opportunity to work with some great designers and learned a lot from them. I also have a Figma library that has been used by over 700 designers.
