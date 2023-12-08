@@ -1,0 +1,47 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Gerry Pass',
+  date: '2023-12-08',
+  title: 'Call for a LLM Framework',
+  description:
+    'When Ruby on Rails was released, it was a huge step forward for the web development community. It preferred convention over configuration and made it easy to get started and to iterate on a large project. We need that for the LLM and AI engineering ecosystem.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+When Ruby on Rails was released, it was a huge step forward for the web development community. It preferred convention over configuration and made it easy to get started and to iterate on a large project. We need that for the LLM and AI engineering ecosystem.
+
+## Current State
+
+It's difficult to imagine AI and LLM's being hyped up more than they are now. Ever since GPT-4 was released and LLM's were shown to be a general purpose technology with high accuracy, it was clear that everyone and every business would be affected by this technology.
+
+Fast forward several months and the hype is still there. With custom GPT's, multiple strong competitors, and improved integration (text gen, image gen, web browsing, etc. all in one), that hype is validated. And let me tell you, my friends and familly are tired of hearing me talk about it.
+
+The challenge is that the every project is unique in its implementation, but not really that unique in its objective and/or structure. And the libraries we have are just that -- libraries. They give you (almost) all the tools you need and say "good luck." Which is fine if we want to keep recreating the wheel with every project. But I would rather us focus on adding value to the world.
+
+## Example
+
+Retrieval-Augmented Generation (RAG) is a technique (intentionally using the word "technique" here over "framework") that allows for LLM's to get additional context, such as personal or internal data, when generating a response. ChatGPT Plus users can use RAG when they make a custom GPT, like I did with [my CandidateGPT](https://chat.openai.com/g/g-veBqIkKIC-gerry-pass-ai) where recruiters can ask me questions about my professional experience. And businesses can use RAG, but it requires two near-separate architectures and at minimum three services. Which ones, you ask? You decide. And that's the problem.
+
+## The Solution
+
+We need a "Ruby on Rails" for LLM's (and other generative AI modals). A framework that has all the conventions and enables configuration only when needed. Here are some high-level specs:
+
+- Written in Python (better for researchers and cutting edge libraries) or JavaScript (better for businesses and web apps)
+- Has a CLI to create a new project
+- Gives the option to add a thin API layer (such as FastAPI or Express) or to use it in its own directory
+- All services default to the most popular (OpenAI, Pinecone, etc) but can be configured to use others
+- One-time config for all services, with the majority being optional: LLM, database, embedding, vector DB, etc.
+- Easy support for short-term memory management, such as minimizing the chat history to just maintain the keep parts of the conversation
+- Easy support for long-term memory, including the ability to intelligently add new data based on the current conversation
+- TDD as a first-class process, so each step is tested and provides clear steps for testing
+
+## Conclusion
+
+Given how fast everything is changing, it would be fair to think that a "Ruby on Rails" for LLM's would be too soon or would become irrelevant quickly. But given how the architectures haven't changed in several months, the majority of these specs are already possible. Time will tell, but I for one am excited for that framework.
