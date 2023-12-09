@@ -1,0 +1,44 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Gerry Pass',
+  date: '2023-12-09',
+  title: 'Using AI is a Skill',
+  description:
+    "Tech interviews typically test DSA and systems design. It's time to include using AI.",
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+I've been doing lots of interviews recently and the structure hasn't changed since I started in 2014. But yet, we have just had a major technological breakthrough that's being compared to the car or steam engine. Why is this not covered in technical interviews? Why are we being asked to _disable_ GitHub Copilot or being told _explicitly_ not to use ChatGPT?
+
+DSA questions are checking a few things.
+
+1. Knowledge of at least one programming language
+2. Ability to problem solve
+3. Ability to measure complexity and optimize performance
+
+All of these can be checked while still using AI. And I would argue that the best way to do each of these is with AI.
+
+## Example
+
+Let's say I'm given a challenge to create a countdown timer between now and some future date. If I start typing...
+
+```ts
+function countdownTimerInDaysHoursMinutesSeconds() {}
+```
+
+and wait a few seconds, I will get a code suggestion and it will likely be better than one I could come up with. If I talk through the generated code, well then...
+
+1. I showed my knowledge by just writing `function` then the function name. And by explaining what's happening line-by-line, I show that I can read code with ease
+2. I solved the problem. In fact, I solved it _better_ and _faster_ than doing it manually
+3. If I mention how I would have done it, I can say how its version is better. Or if I would've done it the same way, I can cycle through suggestions until I get one that's less than ideal and talk through that. This shows my ability to optimize performance
+
+## Suggestion to Interviewers
+
+Give problems that line up with the business and have the candidate solve them however they would in the real world. This way you get a sense for their aptitude like a normal tech interview, while also seeing their ability to leverage AI.
