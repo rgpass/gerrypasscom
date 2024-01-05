@@ -141,7 +141,7 @@ export default function About() {
               Follow on GitHub
             </SocialLink>
             <SocialLink
-              href="https://www.linkedin.com/in/gerry-pass-11379340/"
+              href="https://www.linkedin.com/in/gerry-pass/"
               icon={LinkedInIcon}
               className="mt-4"
             >
