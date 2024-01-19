@@ -1,0 +1,74 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Gerry Pass',
+  date: '2024-01-19',
+  title: 'How to Setup a New Computer (Again)',
+  description:
+    'As a software engineer, you will have to set up your computer many times. This article will show you how to make this easier.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+I have set up a new computer at least 15 times and each time it's been like I'm doing it from scratch. But I just got a new computer and it's high time to fix this problem. I'll show you how I made this process super easy.
+
+## Checklist
+
+Here are the goals for this project.
+
+1. Be able to do everything below by just running one command
+1. Have the script be re-runnable with no side effects
+1. Install Homebrew and associated apps
+1. Install Oh My Zsh
+1. Configure git
+1. Configure GitHub
+1. Configure Mac settings
+1. Install important scripts
+
+If you just want to see the final result, check out [the dotfiles repo](https://github.com/rgpass/dotfiles).
+
+## Key Files
+
+Breaking the files up will allow for better organization and easier maintenance.
+
+- `curl-entry.sh` will be the entry point when calling via `curl` which will enable it to be one command to get it going
+- `install.sh` will be the main script that will delegate to other scripts as needed
+- `.zshrc` will contain my standard zsh config
+- `Brewfile` will contain the list of apps to install with Homebrew
+- `system-preferences.sh` will contain all the Mac OSX settings I always set, like tap to click, locking desktop positions, etc.
+- `.gitconfig` will contain my standard git config
+
+Because there's a single entry point, it's super easy to run the script.
+
+```bash
+curl https://raw.githubusercontent.com/rgpass/dotfiles/main/curl-entry.sh | bash
+```
+
+## Flow
+
+Running the above command will do:
+
+1. `curl` the entry point file and pipe to `bash`
+1. Clone into a new directory and run the `install.sh` script
+1. Configure `sudo` to only need to be entered once
+1. Make all the directories I normally make
+1. Install `z` (frecent algorithm for jumping directories)
+1. Install Oh My Zsh
+1. Create symlink for `.zshrc`
+1. Install or update Homebrew
+1. Install all the apps in the `Brewfile`
+1. Configure the Mac settings
+1. Configure git and GitHub
+1. Exit all apps that would need to be restarted
+
+After it's all done, the computer will be ready to go.
+
+## Key Findings
+
+- `Brewfile`'s are super helpful and can be generated with `brew bundle dump`. This creates a full dump, but you probably don't want all of them
+- Also, you don't really need to keep dependencies versioned, so you can remove `Brewfile.lock.json`
